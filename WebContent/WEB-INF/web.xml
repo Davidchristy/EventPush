@@ -49,6 +49,28 @@
     <url-pattern>/hi3</url-pattern>
   </servlet-mapping>
   
+  <!-- Use the URL http://hostname/EventPushStart/create instead
+       of http://hostname/intro/servlet/coreservlets.CreateEventServlet -->
+  <servlet>
+    <servlet-name>CreateEventServlet</servlet-name>
+    <servlet-class>coreservlets.CreateEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>CreateEventServlet</servlet-name>
+    <url-pattern>/create</url-pattern>
+  </servlet-mapping>
+
+  <!-- Use the URL http://hostname/EventPushStart/create/query instead
+       of http://hostname/intro/servlet/coreservlets.CreateEventQueryServlet -->
+  <servlet>
+    <servlet-name>CreateEventQueryServlet</servlet-name>
+    <servlet-class>coreservlets.CreateEventQueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>CreateEventQueryServlet</servlet-name>
+      <url-pattern>/create/query</url-pattern>
+  </servlet-mapping>
+
   <!-- If the URL gives a directory but not a filename, try
        index.jsp first and index.html second. If neither is
        found, the result is server-specific (e.g., a  
