@@ -5,18 +5,32 @@ import java.util.ArrayList;
 
 public class User {
 	
-	private String name;
-	private String password;
-	private ArrayList<Categories> categories;
+	private String userName;
+	private int userID;
 	
 	public User(){
-		categories = new ArrayList<Categories>();
+		setUserID(-1);
+		setUserName("");
 	}
 	
-	private void addCategories(Categories category){
-		
-		categories.add(category);
-		
+	public User(int id, String name){
+		setUserID(id);
+		setUserName(name);
 	}
 
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 }
