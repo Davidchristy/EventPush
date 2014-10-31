@@ -29,7 +29,7 @@ public class CreateEventServlet extends HttpServlet {
                 "</head>\r\n" + 
                 "<body>\r\n" + 
                 "  <h2>Create Event</h2>\r\n" + 
-                "  <form method=\"post\" action=\"http://localhost:8080/EventPushStart/create/query\">\r\n" + 
+                "  <form method=\"post\" action=\"http://localhost:8080/EventPush/create/query\">\r\n" + 
                 "    <label for=\"name\">Event Name</label>" +
                 "    <input type=\"text\" name=\"name\" id=\"name\"><br>\r\n" +
                 "    <label for=\"date\">Event Date</label>"+

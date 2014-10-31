@@ -59,6 +59,7 @@ public class CreateEventQueryServlet extends HttpServlet {  // JDK 6 and above o
                  + ", " + rset.getString("title")
                  + ", $" + rset.getDouble("price") + "</p>");
             count++;
+            count++;
          }
          out.println("<p>==== " + count + " records found =====</p>");
          */
