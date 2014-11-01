@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
     <wb-module deploy-name="EventPushProject">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="context-root" value="EventPushProject"/>
         <property name="java-output-path" value="/EventPushProject/build/classes"/>
+=======
+    <wb-module deploy-name="EventPush">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="EventPush"/>
+        <property name="java-output-path" value="/EventPush/build/classes"/>
+>>>>>>> e4cd44004ab08f2722d26bb07ef4be96bc61d8c7
     </wb-module>
 </project-modules>

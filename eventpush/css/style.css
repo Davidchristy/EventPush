@@ -1,0 +1,492 @@
+/*
+ 	File Name: style.css
+ 	Description: Basic styles for EventPush
+ 	Version: 1.0
+ 	Author: Joshua Solomon
+*/
+
+/*
+  SECTIONS:
+ 
+ 	1. Basic Styles
+ 	2. Header
+ 	3. Content
+ 	4. Footer
+	
+	5. List view
+	6. Calendar View
+	7. Map View
+	8. Create View
+	
+	9. Single Event Box
+ 	
+*/
+ 
+/* 1. Basic Styles */
+ 
+body{
+	background: #FFF;
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #333;
+}
+ 
+a{
+	color: #1660D9;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #186CF2; 
+}
+ 
+a:active{
+	color: #1355bf; 
+}
+ 
+h1{
+	color: #d91616;
+}
+
+h2, legend{
+	color: #F21818;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+ h3{
+	color: #BF1313;
+	margin: 5px 0;
+}
+
+time{
+	margin: 0 16px;	
+}
+
+#container{
+	width: 100%;
+	margin: 0;
+}
+
+/* 2. Header */
+
+#header-container{
+		background: #FFF;
+		border-bottom: 1px #888 solid;
+		padding: 18px 0;
+		overflow: auto;
+}
+
+#header-logo-container{
+		float: left;
+		margin: 0 2% 0 20px;
+}
+
+#user-info-tab{
+	position: absolute;
+	top:  0;
+	left: 42%;
+	padding: 5px 2%;	
+	color: #FFF;	
+	background: #1660D9;
+}
+
+#user-info-tab a{
+	color: #FFF;
+}
+
+#nav{
+	display: block;
+	float: right;
+	margin: 0 2% 0 0;
+	padding: 0;
+}
+
+#nav li{
+	display: block;
+	float: left;
+	margin: 0;
+	font-size: 125%;
+	text-align: center;
+}
+
+#nav li a{
+	display: block;
+	color: #FFFFFF;	
+	background: #1660D9;
+	margin: 0;
+	height: 20px;
+	padding: 20px;
+}
+
+#nav li a:hover, #nav li a.current{
+	background: #186CF2;
+}
+
+#nav li a.current:after{
+	content: "";
+	height: 0;
+	width: 0;
+	display: block;
+	top: 18px;
+	margin: auto;
+	position: relative;
+	border: solid;
+	border-color: #186CF2 transparent;
+	border-width: 22px 15px 0 15px;
+}
+
+
+/* 3. Content */
+
+#content-container{
+	padding: 10px 10%;
+	overflow: auto;
+	background: #F8F8F8;
+}
+
+
+/* 4. Footer */
+
+#footer-container{
+	background: #FFF;
+	border-top: 1px #888 solid;
+	padding: 25px 0;
+}
+
+#footer-container p{
+	margin: auto;
+	text-align: center;	
+}
+
+
+
+
+
+/* List View */
+
+.list-column{
+	float: left;
+	width: 40%;
+	margin: 0 2% 20px 2%;
+	padding: 0 2%;	
+	background: #FFF;
+}
+
+.list-column:after{
+	content: "";
+	height: 0;
+	width: 0;
+	display: block;
+	top: 18px;
+	margin: auto;
+	position: relative;
+	border: solid;
+	border-color: #FFF transparent;
+	border-width: 22px 15px 0 15px;
+}
+
+.event-list{
+		list-style-type: none;
+		padding: 0;
+}
+
+.event-list li{
+		background: #FFF;
+		padding: 2%;
+		margin: 0 0 5px 0;
+		border: 1px solid;
+		border-color: transparent #F8F8F8 #888 #F8F8F8;
+}
+
+
+/* 6. Calendar View */
+
+#cal-container{
+	background: #FFF;
+	margin: auto;
+	padding: 10px 0 0 .5%;
+}
+
+#cal-container:after{
+	content: "";
+	height: 0;
+	width: 0;
+	display: block;
+	top: 18px;
+	margin: auto;
+	position: relative;
+	border: solid;
+	border-color: #FFF transparent;
+	border-width: 22px 15px 0 15px;
+}
+
+
+.cal-table{
+	display: block;
+	background: #FFF;
+	margin: 10px auto;
+}
+
+.cal-row{
+	overflow: auto;
+}
+
+
+.cal-month{
+	height: 20px;
+	width: 94%;	
+	padding: 20px 2%;
+	margin: 0.5% 0 0 0.5%;;	
+	border: 1px solid;
+	background: #F8F8F8;
+	border-color: transparent #F8F8F8 #888 #F8F8F8;	
+	text-align: center;
+}
+
+.cal-month h2:before{
+	content: "";
+	float: left;
+	top: -5px;
+	left: -10%;
+	height: 0;
+	width: 0;
+	display: block;
+	position: relative;
+	border: solid;
+	border-color: transparent #F21818;
+	border-width: 15px 22px 15px 0;
+}
+
+.cal-month h2{
+	display: inline-block;
+	width: 85%;
+	margin: 0;	
+}
+
+.cal-month h2:after{
+	content: "";
+	float: right;
+	top: -5px;
+	right: -10%;
+	height: 0;
+	width: 0;
+	display: block;
+	position: relative;
+	border: solid;
+	border-color: transparent #F21818;
+	border-width: 15px 0 15px 22px;
+}
+
+
+.cal-cell{
+	float: left;
+	height: 110px;
+	width: 9%;
+	margin: 0.5%;
+	padding: 2%;
+	border: 1px solid;
+	border-color: transparent #F8F8F8 #888 #F8F8F8;
+}
+
+.cal-h{
+	background: #F8F8F8;
+	height: auto;
+	text-align: center;
+	font-weight: bold;
+	font-size: 125%;
+}
+
+
+.cal-blank{
+	background: #F8F8F8;	
+}
+
+.cal-table thead, .cal-table tbody{
+	border: 1px solid;
+	background: #F8F8F8;
+	border-color: transparent #F8F8F8 #888 #F8F8F8;	
+	width: 100%;
+}
+
+.cal-event-list{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	height: 50px;
+	overflow: scroll;
+}
+
+.cal-event-list li{
+	margin: 0 0 5px 0;
+}
+
+
+
+/* 7. Map View */
+
+#event-map{
+	width: 100%;
+	height: 550px;	
+	border: 0;
+}
+
+
+/* 8. Create View */
+
+#new-event-form{
+	background: #FFF;
+	padding: 2%;
+	margin: 0 0 5px 0;
+	border: 1px solid;
+	border-color: transparent #F8F8F8 #888 #F8F8F8;
+}
+
+#new-event-form label, #new-event-form input{
+		margin-bottom: 10px;
+}
+
+fieldset{
+	background: #FFF;
+	padding: 2%;
+	margin: 0 0 40px 0;
+	border: 1px solid;
+	border-color: transparent #F8F8F8 #888 #F8F8F8;
+}
+
+legend{
+	margin: auto;	
+}
+
+textarea{
+	max-width: 100%;
+	min-height:50px;
+}
+
+
+.form-block{
+	width: 60%;
+	margin: 10px auto;
+	overflow: auto;
+}
+.two-block label{
+	float: left;
+	width: 30%;
+	margin-right: 2%;
+	text-align: right;
+}
+
+.two-block input{
+	float: left;
+	width: 50%;	
+}
+
+.two-block textarea{
+	float: left;
+	width: 50%;	
+	max-width: 50%;
+}
+
+.four-block label, .four-block input{
+	float: left;	
+}
+
+.four-block label{
+	width: 18%;
+	margin-right: 2%;
+	text-align: right;
+}
+
+.four-block input, .two-block select{
+	width: 14%;
+	margin-right: 2%;
+}
+
+.four-block .first{
+	width: 30%;
+	margin-right: 2%;
+	text-align: right;
+}
+
+#address{
+	width: 25%;	
+}
+
+#address + label{
+ width: 7%	
+}
+
+.submit-container{
+	display: block;
+	width: 10%;
+	height: 40px;
+	margin: auto;
+	background: #1660D9;
+}
+
+#submit{
+	width: 100%;
+	height: 100%;
+	border: none;
+	color: #FFF;
+	background: none;
+	cursor: pointer;
+}
+
+.submit-container:before{
+	content: "";
+	height: 0;
+	width: 0;
+	display: block;
+	bottom: 20px;
+	margin: 0 auto -22px auto;
+	position: relative;
+	border: solid;
+	border-color: #1660D9 transparent;
+	border-width: 0 15px 22px 15px;
+}
+
+.submit-container:hover{
+	background: #186CF2;
+}
+
+.submit-container:hover:before{
+	border-color: #186CF2 transparent;
+}
+
+
+/* 9. Single Event Box */
+
+#single-event-container{
+	position: fixed;	
+	background: rgba(255,255,255,.5);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+.single-event-box{
+	position: relative;
+	width: 50%;
+	max-height: 66%;
+	padding: 20px 2%;
+	margin: auto;
+	top: 40px;
+	background: #FFF;
+	border: 20px solid #F8F8F8;	
+}
+
+.single-event-box:before{
+	content: "";
+	height: 0;
+	width: 0;
+	display: block;
+	bottom: 80px;
+	margin: 0 auto -22px auto;
+	position: relative;
+	border: solid;
+	border-color: #F8F8F8 transparent;
+	border-width: 0 30px 44px 30px;
+}
