@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
+	<name>EventPushProject</name>
+=======
 	<name>EventPush</name>
+>>>>>>> e4cd44004ab08f2722d26bb07ef4be96bc61d8c7
 	<comment></comment>
 	<projects>
 	</projects>
