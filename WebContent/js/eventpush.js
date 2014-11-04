@@ -47,8 +47,15 @@ jQuery(document).ready(function($) {
 	
 	function changeContentHtmlTo(page){
 		
-		//make lowercase
-		var url = page.toLowerCase()+".html";
+		var ext = ".html";
+		console.log(page);
+		if(page.toLowerCase() == "list"){
+			
+			ext = ".jsp";
+		}
+		
+		
+		var url = page.toLowerCase()+ext;
 		
 		$.ajax({url: url}).done(function(html){
 			$("#content-container").html(html);
