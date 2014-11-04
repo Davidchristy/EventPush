@@ -26,21 +26,8 @@ String strsnt = "insert into Events values ('"+eventTitle+"','"+description+
 "','"+startDate+"','"+endDate+"','"+endTime+"','"+startTime+"','"+locationName+"','"+address+
 "','"+city+"','"+state+"','"+"-1"+"','"+category+"','"+"0"+"','"+zip+"')";
 
-//System.out.println(strsnt);
+System.out.println(strsnt);
 
-//int i=st.executeUpdate(strsnt); 
-
-ResultSet rs; 
-rs = st.executeQuery("select * from Events;");
-String output = "";
-
-while (rs.next()) {
-    output =  (String) rs.getObject(2);
-    //the two is because it is pulling from the 2nd coloum (des)
-    System.out.println(output);    
-}
-rs.close();
-
+int i=st.executeUpdate(strsnt); 
 
 %>
-this is getting <%=output %> from the database
