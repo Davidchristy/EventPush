@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
 	
 	function singleEventBox(eventID){
 		
-		var url = "single-event.html?eid="+eventID;
+		var url = "single-event.jsp?eid="+eventID;
 		$.ajax({url: url}).done(function(html){
 			$("body").append(html);
 		});

@@ -58,6 +58,11 @@ public class Event {
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
 	}
+	
+	public String getCategory() {
+		return Category.idToName(categoryID);
+	}
+	
 	public String getEventTitle() {
 		return eventTitle;
 	}

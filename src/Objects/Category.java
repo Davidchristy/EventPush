@@ -24,5 +24,16 @@ public class Category {
 	
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
-	}	
+	}
+	
+	public static String idToName(int id)
+	{
+		switch(id)
+		{
+		case 1:	return "Fundraiser";
+		case 2: return "Party";
+		case 3: return "Study Session";
+		default: return "Category";
+		}
+	}
 }
