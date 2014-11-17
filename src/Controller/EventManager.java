@@ -6,6 +6,8 @@ import java.sql.*;
 
 import javax.sql.*;
 
+import Model.Event;
+
 
 
 
