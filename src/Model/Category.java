@@ -1,4 +1,4 @@
-package Objects;
+package Model;
 
 public class Category {
 	

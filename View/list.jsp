@@ -1,17 +1,15 @@
 
 
-<%@page import="Objects.EventRetriever"%>
+<%@page import="Objects.EventManager"%>
 <%@page import="Objects.Event"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
-<% 
-
+<%
 	int currentLocation = -1;
 	int currentRadius = -1;
-	EventRetriever eventRetriever = new EventRetriever(currentLocation, currentRadius);
+	EventManager eventRetriever = new EventManager(currentLocation, currentRadius);
 	List<Event> currentEvents = eventRetriever.getEventArray();
-
 %>
 
 <div class="list-column">

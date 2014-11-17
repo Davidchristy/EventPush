@@ -1,4 +1,4 @@
-package Objects;
+package Controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.sql.*;
 
 
 
-public class EventRetriever {
+public class EventManager {
     
     private List<Event> eventArray;
     private int currentCenter;
@@ -20,7 +20,7 @@ public class EventRetriever {
     
     
     
-    public EventRetriever(){
+    public EventManager(){
         
         /*
          * Duplicated code, it's horrible and I have a few hours left
@@ -49,7 +49,7 @@ public class EventRetriever {
         this.retrieveEvents(currentCenter, currentRadius);
     }//end default constructor
     
-    public EventRetriever(int center, int radius){
+    public EventManager(int center, int radius){
         
         String DATABASE_NAME = "jdbc:mysql://eventpushdb.c5nzpaopql9i.us-west-1.rds.amazonaws.com:3306/EventPush";
         String DATABASE_USERNAME = "eventpushroot";
