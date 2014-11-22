@@ -5,3 +5,5 @@ http://tomcat.apache.org/download-70.cgi
 
 Also, MySQL JDBC Driver. Intsallation instructions below.
 http://www.ntu.edu.sg/home/ehchua/programming/java/JDBC_Basic.html#MySQLJDBCDriverInstall
+
+I will need to update this as time goes on...
