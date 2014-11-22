@@ -34,11 +34,11 @@ public class EventManager {
             Class.forName("com.mysql.jdbc.Driver");
             try {
                 con = DriverManager.getConnection( DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASS);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         
@@ -60,11 +60,11 @@ public class EventManager {
             Class.forName("com.mysql.jdbc.Driver");
             try {
                 con = DriverManager.getConnection( DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASS);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         
