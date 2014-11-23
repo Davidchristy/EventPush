@@ -15,13 +15,13 @@ public class Event {
 	private String	city;
 	private String	state;
 	private int		zip;
-	private double	lng;
-	private double	lat;
+	private float	lng;
+	private float	lat;
 	
 	public Event(int eventID, int userID, int categoryID, String eventTitle, 
 				 String description, String startDate, String startTime, 
 				 String endDate, String endTime, String locationName, 
-				 String address, String city, String state, int zip, double lng, double lat){
+				 String address, String city, String state, int zip, float lng, float lat){
 		
 		this.eventID 	 	= eventID;
 		this.userID 	 	= userID;
@@ -136,25 +136,25 @@ public class Event {
 
 
 
-	public double getLng() {
+	public float getLng() {
 		return lng;
 	}
 
 
 
-	public void setLng(double lng) {
+	public void setLng(float lng) {
 		this.lng = lng;
 	}
 
 
 
-	public double getLat() {
+	public float getLat() {
 		return lat;
 	}
 
 
 
-	public void setLat(double lat) {
+	public void setLat(float lat) {
 		this.lat = lat;
 	}
 	

@@ -44,6 +44,7 @@
 			description, startDate, startTime, endDate, endTime,
 			locationName, address, city, state, zip, lng, lat);
 	eventAdder.addEvent(event);
+
 %>
 <html>
 <head>
