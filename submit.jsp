@@ -31,7 +31,7 @@
 	float lat;
 
 	AddressConverter converter = new AddressConverter();
-	String strAddress = address + city + state;
+	String strAddress = address + " " + city + " " + state + " " + zip;
 	GoogleResponse google = converter.convertToLatLong(strAddress);
 
 	Result[] result = google.getResults();
@@ -44,7 +44,6 @@
 			description, startDate, startTime, endDate, endTime,
 			locationName, address, city, state, zip, lng, lat);
 	eventAdder.addEvent(event);
-
 %>
 <html>
 <head>
