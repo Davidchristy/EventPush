@@ -98,8 +98,8 @@ public class EventManager {
                 String	address = (String) rs.getObject("address");
                 String	city = (String) rs.getObject("city");
                 String	state = (String) rs.getObject("state");
-                float lng = (float) rs.getObject("lng");
-                float lat = (float) rs.getObject("lat");
+                float lng = rs.getFloat("lng");
+                float lat = rs.getFloat("lat");
                 
                 
                 /*
@@ -204,8 +204,8 @@ public class EventManager {
                 String	address = (String) rs.getObject("address");
                 String	city = (String) rs.getObject("city");
                 String	state = (String) rs.getObject("state");
-                double	lng = (double) rs.getObject("lng");
-                double	lat = (double) rs.getObject("lat");
+                float	lng = rs.getFloat("lng");
+                float	lat = rs.getFloat("lat");
                 
                 
                 /*
