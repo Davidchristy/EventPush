@@ -21,8 +21,8 @@ String	state = request.getParameter("state");
 int		zip = Integer.parseInt(request.getParameter("zip"));
 
 /* Generate lng and lat here from address info w/ Google API*/
-double lng;	//Assign these
-double lat;
+float lng;	//Assign these
+float lat;
 Event event = new Event(eventID, userID, categoryID, eventTitle, 
 		 description, startDate, startTime, 
 		 endDate, endTime, locationName, 
