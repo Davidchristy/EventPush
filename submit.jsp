@@ -33,7 +33,7 @@ eventAdder.addEvent(event);
 <head>
     <title>Submit Event</title>
     <script>
-        time = 7
+        time = 6
         var countdown = function(){
             if(time == 0){
                 window.location.replace('http://www.eventpushtucson.com');
@@ -44,11 +44,11 @@ eventAdder.addEvent(event);
                 setTimeout(countdown, 1000);
             }
         }
-        countdown();
+        window.addEventListener("load",countdown);
     </script>
 </head>
 <body>
 	<h3>Event Submitted!</h3><br>
-    <a href='index.jsp'>Return to event list.</a> Your browser should automatically redirect you in <div id='time'></div> seconds...
+    <a href='index.jsp'>Return to event list.</a> Your browser should automatically redirect you in <a id='time'></a> seconds...
 </body>
 </html>
