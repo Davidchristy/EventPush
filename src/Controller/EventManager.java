@@ -144,6 +144,7 @@ public class EventManager {
                 double 	lat = -1;
                 if(tempLat != null){
                     lat = tempLat.doubleValue();
+                }
                 
                 
                 eventArray.add(new Event(eventID, userID, categoryID, eventTitle, description, startDate, startTime, endDate, endTime, locationName, address, city, state, zip,lng,lat));
