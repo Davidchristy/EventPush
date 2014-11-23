@@ -98,6 +98,8 @@ public class EventManager {
                 String	address = (String) rs.getObject("address");
                 String	city = (String) rs.getObject("city");
                 String	state = (String) rs.getObject("state");
+                float lng = (float) rs.getObject("lng");
+                float lat = (float) rs.getObject("lat");
                 
                 
                 /*
@@ -133,7 +135,7 @@ public class EventManager {
                 if(tempTime != null){
                     endTime = tempTime.toString(); //might want to change dates' and times'	
                 }
-                
+                /*
                 Double tempLng = Double.parseDouble((String) rs.getObject("lng"));
                 double 	lng = -1;
                 if(tempLng != null){
@@ -144,7 +146,7 @@ public class EventManager {
                 double 	lat = -1;
                 if(tempLat != null){
                     lat = tempLat.doubleValue();
-                }
+                }*/
                 
                 
                 eventArray.add(new Event(eventID, userID, categoryID, eventTitle, description, startDate, startTime, endDate, endTime, locationName, address, city, state, zip,lng,lat));
