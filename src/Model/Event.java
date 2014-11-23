@@ -15,11 +15,13 @@ public class Event {
 	private String	city;
 	private String	state;
 	private int		zip;
+	private double	lng;
+	private double	lat;
 	
 	public Event(int eventID, int userID, int categoryID, String eventTitle, 
 				 String description, String startDate, String startTime, 
 				 String endDate, String endTime, String locationName, 
-				 String address, String city, String state, int zip){
+				 String address, String city, String state, int zip, double lng, double lat){
 		
 		this.eventID 	 	= eventID;
 		this.userID 	 	= userID;
@@ -35,6 +37,8 @@ public class Event {
 		this.city 			= city;
 		this.state 			= state;
 		this.zip 			= zip;
+		this.setLng(lng);
+		this.setLat(lat);
 		
 	}
 	
@@ -128,6 +132,30 @@ public class Event {
 	}
 	public void setZip(int zip) {
 		this.zip = zip;
+	}
+
+
+
+	public double getLng() {
+		return lng;
+	}
+
+
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+
+
+
+	public double getLat() {
+		return lat;
+	}
+
+
+
+	public void setLat(double lat) {
+		this.lat = lat;
 	}
 	
 }

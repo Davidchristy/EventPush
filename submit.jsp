@@ -19,10 +19,14 @@ String	address = request.getParameter("address");
 String	city = request.getParameter("city");
 String	state = request.getParameter("state");
 int		zip = Integer.parseInt(request.getParameter("zip"));
+
+/* Generate lng and lat here from address info w/ Google API*/
+double lng;	//Assign these
+double lat;
 Event event = new Event(eventID, userID, categoryID, eventTitle, 
 		 description, startDate, startTime, 
 		 endDate, endTime, locationName, 
-		 address, city, state, zip);
+		 address, city, state, zip,lng,lat);
 eventAdder.addEvent(event);
 %>
 <html>
