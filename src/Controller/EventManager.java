@@ -98,6 +98,8 @@ public class EventManager {
                 String	address = (String) rs.getObject("address");
                 String	city = (String) rs.getObject("city");
                 String	state = (String) rs.getObject("state");
+                double	lng = (double)rs.getObject("lng");
+                double	lat = (double)rs.getObject("lat");
                 
                 
                 /*
@@ -135,7 +137,7 @@ public class EventManager {
                 }
                 
                 
-                eventArray.add(new Event(eventID, userID, categoryID, eventTitle, description, startDate, startTime, endDate, endTime, locationName, address, city, state, zip));
+                eventArray.add(new Event(eventID, userID, categoryID, eventTitle, description, startDate, startTime, endDate, endTime, locationName, address, city, state, zip,lng,lat));
                 System.out.println(eventArray.size());	
             }
             rs.close();
@@ -170,7 +172,7 @@ public class EventManager {
     
     public Event getEvent(int eID){
         
-        Event newEvent = new Event(-1, -1, -1, "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", -1);
+        Event newEvent = new Event(-1, -1, -1, "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", -1,-1,-1);
         
         Statement st;
         try {
@@ -190,6 +192,8 @@ public class EventManager {
                 String	address = (String) rs.getObject("address");
                 String	city = (String) rs.getObject("city");
                 String	state = (String) rs.getObject("state");
+                double	lng = (double) rs.getObject("lng");
+                double	lat = (double) rs.getObject("lat");
                 
                 
                 /*
@@ -227,7 +231,7 @@ public class EventManager {
                 }
                 
                 
-                newEvent = new Event(eventID, userID, categoryID, eventTitle, description, startDate, startTime, endDate, endTime, locationName, address, city, state, zip);
+                newEvent = new Event(eventID, userID, categoryID, eventTitle, description, startDate, startTime, endDate, endTime, locationName, address, city, state, zip, lng, lat);
                 System.out.println(newEvent.getEventTitle() + "Has Been Created as a New Event Object");
             }
             rs.close();
@@ -248,9 +252,9 @@ public class EventManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-    	String strsnt = "insert into Events (`event-title`, `description`, `start-date`, `end-date`, `end-time`, `start-time`, `location-name`, `address`, `city`, `state`, `category-id`, `user-id`, `zip`) values ('"+event.getEventTitle()+"','"+event.getDescription()+
+    	String strsnt = "insert into Events (`event-title`, `description`, `start-date`, `end-date`, `end-time`, `start-time`, `location-name`, `address`, `city`, `state`, `category-id`, `user-id`, `zip`, `lng`, `lat`) values ('"+event.getEventTitle()+"','"+event.getDescription()+
     			"','"+event.getStartDate()+"','"+event.getEndDate()+"','"+event.getEndTime()+"','"+event.getStartTime()+"','"+event.getLocationName()+"','"+event.getAddress()+
-    			"','"+event.getCity()+"','"+event.getState()+"','"+event.getCategoryID()+"','"+"0"+"','"+event.getZip()+"');";
+    			"','"+event.getCity()+"','"+event.getState()+"','"+event.getCategoryID()+"','"+"0"+"','"+event.getZip()+"','"+event.getLng()+"','"+event.getLat()+"');";
     	System.out.println(strsnt);
     	try {
 		st.executeUpdate(strsnt);
