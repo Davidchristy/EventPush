@@ -250,7 +250,7 @@ public class EventManager {
 		} 
     	String strsnt = "insert into Events (event-title, description, start-date, end-date, end-time, start-time, location-name, address, city, state, category-id, user-id, zip) values ('"+event.getEventTitle()+"','"+event.getDescription()+
     			"','"+event.getStartDate()+"','"+event.getEndDate()+"','"+event.getEndTime()+"','"+event.getStartTime()+"','"+event.getLocationName()+"','"+event.getAddress()+
-    			"','"+event.getCity()+"','"+event.getState()+"','"+event.getCategory()+"','"+"0"+"','"+event.getZip()+"')";
+    			"','"+event.getCity()+"','"+event.getState()+"','"+event.getCategory()+"','"+"0"+"','"+event.getZip()+"');";
     	try {
 		st.executeUpdate(strsnt);
 		} catch (SQLException e) {
