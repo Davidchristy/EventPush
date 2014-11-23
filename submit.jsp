@@ -26,9 +26,25 @@ Event event = new Event(eventID, userID, categoryID, eventTitle,
 eventAdder.addEvent(event);
 %>
 <html>
-<head><title>Submit Event</title></head>
+<head>
+    <title>Submit Event</title>
+    <script>
+        time = 7
+        var countdown = function(){
+            if(time == 0){
+                window.location.replace('http://www.eventpushtucson.com');
+            }
+            else{
+                document.getElementById('time').innerHTML = time;
+                time = time -1;
+                setTimeout(countdown, 1000);
+            }
+        }
+        countdown();
+    </script>
+</head>
 <body>
 	<h3>Event Submitted!</h3><br>
-	<a href='index.jsp'>Return to event list.</a>
+    <a href='index.jsp'>Return to event list.</a> Your browser should automatically redirect you in <div id='time'></div> seconds...
 </body>
 </html>
