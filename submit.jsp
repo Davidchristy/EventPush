@@ -40,7 +40,7 @@ eventAdder.addEvent(event);
                 setTimeout(countdown, 1000);
             }
         }
-        countdown();
+        document.addEventListener("load",countdown);
     </script>
 </head>
 <body>
