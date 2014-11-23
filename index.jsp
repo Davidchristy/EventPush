@@ -5,7 +5,6 @@
 
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/eventpush.js?v=7"></script>
-<script src="js/geolocation.js"></script>
 <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 
