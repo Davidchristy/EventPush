@@ -248,7 +248,7 @@ public class EventManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-    	String strsnt = "insert into Events(`event-title`,`description`,`start-date`,`end-date`,`end-time`,`start-time`,`location-name`,`address`,`city`,`state`,`category-id`,`user-id`,`zip`) values ('"+event.getEventTitle()+"','"+event.getDescription()+
+    	String strsnt = "insert into Events (event-title, description, start-date, end-date, end-time, start-time, location-name, address, city, state, category-id, user-id, zip) values ('"+event.getEventTitle()+"','"+event.getDescription()+
     			"','"+event.getStartDate()+"','"+event.getEndDate()+"','"+event.getEndTime()+"','"+event.getStartTime()+"','"+event.getLocationName()+"','"+event.getAddress()+
     			"','"+event.getCity()+"','"+event.getState()+"','"+event.getCategory()+"','"+"0"+"','"+event.getZip()+"')";
     	try {
