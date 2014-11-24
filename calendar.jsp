@@ -10,9 +10,9 @@
 // Calendar Calculations:
 
 // Strange calculations from an assignment spec in 227					
-int 	year		= Integer.parseInt(request.getParameter("y")),
-		month		= Integer.parseInt(request.getParameter("m")),
-		day 		= 0, 						// current day
+int 	year		= Integer.parseInt(request.getParameter("y"));
+int		month		= Integer.parseInt(request.getParameter("m"));
+int		day 		= 0, 						// current day
  		monthCode 	= 0, 						// for 1st day calculation
  		firstDay	= -1,						// 1st day of the month
  		numDays		= 31, 						// number of days in the month

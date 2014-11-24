@@ -46,14 +46,15 @@ jQuery(document).ready(function($) {
 
 	function changeContentHtmlTo(page) {
 
-		var ext = ".html";
-		console.log(page);
-		if (page.toLowerCase() == "list") {
-
-			ext = ".jsp";
+		var params = "";
+		if (page.toLowerCase() == "calendar") {
+			var d = new Date();
+			var m = d.getMonth();
+			var y = d.getFullYear();
+			params="?y=" + y + "&m=" + m;
 		}
 
-		var url = page.toLowerCase() + ".jsp";
+		var url = page.toLowerCase() + ".jsp" + params;
 
 		$.ajax({
 			url : url
