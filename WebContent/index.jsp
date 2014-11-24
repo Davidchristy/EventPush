@@ -11,38 +11,37 @@
 
 <body>
 
-<div id="container">
-	<header id="header-container">
-    	<div id="header-logo-container">
-    		<a href="/"><img src="images/logo.png" alt="EventPush Logo" title="Back to the home page." /></a>
-        </div>
-        
-        <div id="user-info-tab">
-        	<a href="#" class="fb-login">Login</a>
-        </div>
-        
-        <ul id="nav">
-            <li id="list-tab" title="List"><a href="#"class="current">List</a></li>
-            <li id="calendar-tab" title="Calendar"><a href="#">Calendar</a></li>
-            <li id="map-tab" title="Map"><a href="#">Map</a></li>
-            <li id="create-tab" title="Create"><a href="#">Create</a></li>
-        </ul>
-	</header>
-    
-    <main id="content-container">
-    	<h1>LOADING...</h1>
-    </main>
-    
-    <footer id="footer-container">
-    <div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
-    	<p>Copyright &copy; 2014 Karin Blanford, david Christy, Sam Ramirez, Joshua Solomon</p>
-    </footer>
-</div>
+	<div id="container">
+		<header id="header-container">
+			<div id="header-logo-container">
+				<a href="/"><img src="images/logo.png" alt="EventPush Logo"
+					title="Back to the home page." /></a>
+			</div>
+
+			<div id="user-info-tab">
+				<a href="#" class="fb-login">Login</a>
+			</div>
+
+			<ul id="nav">
+				<li id="list-tab" title="List"><a href="#" class="current">List</a></li>
+				<li id="calendar-tab" title="Calendar"><a href="#">Calendar</a></li>
+				<li id="map-tab" title="Map"><a href="#">Map</a></li>
+				<li id="create-tab" title="Create"><a href="#">Create</a></li>
+			</ul>
+		</header>
+
+		<main id="content-container">
+		<h1>LOADING...</h1>
+		</main>
+
+		<div class="fb-like" data-share="true" data-width="450"
+			data-show-faces="true"></div>
+
+		<footer id="footer-container">
+			<p>Copyright &copy; 2014 Karin Blanford, David Christy, Sam
+				Ramirez, Joshua Solomon</p>
+		</footer>
+	</div>
 
 
 </body>
