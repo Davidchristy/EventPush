@@ -34,6 +34,12 @@
     </main>
     
     <footer id="footer-container">
+    <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
     	<p>Copyright &copy; 2014 Karin Blanford, david Christy, Sam Ramirez, Joshua Solomon</p>
     </footer>
 </div>
