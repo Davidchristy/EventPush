@@ -244,39 +244,33 @@ time{
 	text-align: center;
 }
 
-.cal-month h2:before{
-	content: "";
-	float: left;
-	top: -5px;
-	left: -10%;
+.cal-arrow{
 	height: 0;
 	width: 0;
-	display: block;
-	position: relative;
+	display: inline-block;
 	border: solid;
 	border-color: transparent #F21818;
+	position: relative;
+	top: -5px;
+	cursor: pointer;
+}
+
+.prev{
 	border-width: 15px 22px 15px 0;
 }
 
-.cal-month h2{
-	display: inline-block;
-	width: 85%;
-	margin: 0;	
-}
-
-.cal-month h2:after{
-	content: "";
-	float: right;
-	top: -5px;
-	right: -10%;
-	height: 0;
-	width: 0;
-	display: block;
-	position: relative;
-	border: solid;
-	border-color: transparent #F21818;
+.next{
 	border-width: 15px 0 15px 22px;
 }
+
+#cal-date{
+	display: inline-block;
+	width: 85%;
+	margin: 0;
+	position: relative;
+	top: -50%;
+}
+
 
 
 .cal-cell{
