@@ -102,8 +102,7 @@ switch(month){
 		monthCode = 5;
 		break;
 	default:
-			System.out.println("Error");
-			//System.exit(0);		
+			System.out.println("Error");		
 }
 
 // calculates the first day of the month

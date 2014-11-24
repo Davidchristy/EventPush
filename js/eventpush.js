@@ -47,11 +47,11 @@ jQuery(document).ready(function($) {
 	function changeContentHtmlTo(page) {
 
 		var params = "";
-		if (page.toLowerCase() == "calendar") {
+		if (page.toLowerCase() == "calendar") { //calendar params
 			var d = new Date();
 			var m = d.getMonth();
 			var y = d.getFullYear();
-			params="?y=" + y + "&m=" + m;
+			params="?y=" + y + "&m=" + ++m;
 		}
 
 		var url = page.toLowerCase() + ".jsp" + params;
@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
 	/***************************************************************************
 	 * 
 	 * Adds the single event box to the page body.
-	 *  /
+	 *
 	 **************************************************************************/
 
 	function singleEventBox(eventID) {
