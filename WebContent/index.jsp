@@ -34,7 +34,7 @@
     </main>
     
     <footer id="footer-container">
-    	<p>Copyright &copy; 2014 Karin Blanford, David Christy, Sam Ramirez, Joshua Solomon</p>
+    	<p>Copyright &copy; 2014 Karin Blanford, David christy, Sam Ramirez, Joshua Solomon</p>
     </footer>
 </div>
 
