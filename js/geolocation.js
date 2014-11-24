@@ -1,6 +1,5 @@
 	$(document).on("pageload", function() {
 
-		function showPosition(position) {
 			var latitude = position.coords.latitude;
 			var longitude = position.coords.longitude;
 			// var latlon = position.coords.latitude + "," +
@@ -8,7 +7,7 @@
 			console.log("Latitude: " + latitude);
 			console.log("Longitude: " + longtitude);
 
-		}
+		
 
 		function showError(error) {
 			switch (error.code) {
