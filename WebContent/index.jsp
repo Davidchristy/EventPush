@@ -48,8 +48,7 @@
 
 
 		<footer id="footer-container">
-			<div class="fb-like"
-				data-href="https://developers.facebook.com/docs/plugins/"
+			<div class="fb-like" data-href="http://www.eventpushtucson.com"
 				data-layout="standard" data-action="like" data-show-faces="true"
 				data-share="true"></div>
 			<p>Copyright &copy; 2014 Karin Blanford, David Christy, Sam
