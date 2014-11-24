@@ -9,11 +9,11 @@
 	int currentLocation = -1;
 	int currentRadius = -1;
 	EventManager eventAdder = new EventManager(currentLocation,
-			currentRadius);
+	currentRadius);
 	int eventID = -1;
 	int userID = 0;
 	int categoryID = Integer.parseInt(request
-			.getParameter("category-id"));
+	.getParameter("category-id"));
 	String eventTitle = request.getParameter("event-title");
 	String description = request.getParameter("description");
 	String startDate = request.getParameter("start-date"); //might want to change dates" and times"
@@ -34,15 +34,17 @@
 	String strAddress = address + " " + city + " " + state + " " + zip;
 	GoogleResponse google = converter.convertToLatLong(strAddress);
 
-	Result[] result = google.getResults();
-	String latitude = result[0].getGeometry().getLocation().getLat();
-	String longtitude = result[1].getGeometry().getLocation().getLng();
+	String latitude = "", longtitude = "";
+	for(Result result : google.getResults()){
+	latitude = result.getGeometry().getLocation().getLat();
+	longtitude = result.getGeometry().getLocation().getLng();
+	}
 	lat = Float.parseFloat(latitude);
 	lng = Float.parseFloat(longtitude);
 
 	Event event = new Event(eventID, userID, categoryID, eventTitle,
-			description, startDate, startTime, endDate, endTime,
-			locationName, address, city, state, zip, lng, lat);
+	description, startDate, startTime, endDate, endTime,
+	locationName, address, city, state, zip, lng, lat);
 	eventAdder.addEvent(event);
 %>
 <html>
