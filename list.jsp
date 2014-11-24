@@ -1,5 +1,3 @@
-
-
 <%@page import="Controller.EventManager"%>
 <%@page import="Model.Event"%>
 <%@page import="java.util.ArrayList"%>
