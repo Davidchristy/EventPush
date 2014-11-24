@@ -2,7 +2,7 @@
 	eventpush.js
 	Description: Functions for EventPush 
 	Version: 1.0
-	Author: Joshua Solomon
+	Author: Joshua Solomon, Karin Blanford
  */
 
 jQuery(document).ready(function($) {
@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 	/***************************************************************************
 	 * 
 	 * Changes the content of #content-container to <page>.html's content via
-	 * Ajax
+	 * AJAX
 	 *  /
 	 **************************************************************************/
 
@@ -49,9 +49,9 @@ jQuery(document).ready(function($) {
 		var params = "";
 		if (page.toLowerCase() == "calendar") { //calendar params
 			var d = new Date();
-			var m = d.getMonth();
+			var m = d.getMonth() + 1;
 			var y = d.getFullYear();
-			params="?y=" + y + "&m=" + ++m;
+			params="?y=" + y + "&m=" + m;
 		}
 
 		var url = page.toLowerCase() + ".jsp" + params;
@@ -63,6 +63,7 @@ jQuery(document).ready(function($) {
 		});
 
 	}// end changeContentHtmlTo(page)
+	
 
 	/***************************************************************************
 	 * 
@@ -97,13 +98,64 @@ jQuery(document).ready(function($) {
 	 * 
 	 * Removes the single event box to the page body when the
 	 * single-event-container is clicked.
-	 *  /
+	 *  
 	 **************************************************************************/
 
 	$('body').on('click', '#single-event-container', function() {
 		$(this).remove();
 	});// end click single-event-container
 
+	
+	/***************************************************************************
+	 * 
+	 * Gets the previous calendar month by decrementing the m GET parameter
+	 * when retrieving calendar.jsp via AJAX
+	 *  
+	 **************************************************************************/
+
+	$('body').on('click', '.cal-arrow', function() {
+		var params = "";
+		var s = $("#cal-date").html();
+		var d = new Date(s);
+		if($(this).hasClass("prev")){
+			var m = (d.getMonth() + 11)%12 + 1;
+			var y = d.getFullYear();
+			
+			if(m == 12){
+				y--;
+			}
+		}else{
+			var m = (d.getMonth() + 1)%12 + 1;
+			var y = d.getFullYear();
+			if(m == 1){
+				y++;
+			}
+		}
+		
+		/* TODO 	
+		 * 	we might want to check for a minimum date and remove 
+		 *	the back arrow, or max date and remove the next arrow
+		 */
+		
+		params="?y=" + y + "&m=" + m;
+		
+		var url = "calendar.jsp" + params;
+
+		$.ajax({
+			url : url
+		}).done(function(html) {
+			$("#content-container").html(html);
+		});
+	});// end click prev-arrow
+
+
+	
+	/***************************************************************************
+	 * 
+	 * Gets geolocation from browser
+	 * 
+	 **************************************************************************/
+	
 	function getLocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(showPosition, showError);

@@ -7,26 +7,21 @@
 //Get events by month:
 //TODO write / call getByMonth method in Controller
 
-// Calendar Calculations:
+// Calendar Calculations: 
 
 // Strange calculations from an assignment spec in 227					
 int 	year		= Integer.parseInt(request.getParameter("y"));
 int		month		= Integer.parseInt(request.getParameter("m"));
-int		day 		= 0, 						// current day
- 		monthCode 	= 0, 						// for 1st day calculation
- 		firstDay	= -1,						// 1st day of the month
- 		numDays		= 31, 						// number of days in the month
-		monthNum 	= year / 100,				// first 2 digits of the month
-		yearNum 	= year - (monthNum*100); 	// last 2 digits of the year
-boolean	leapYear 	= false, 					// for monthCode calculation
+int		c 			= year / 100,				// first 2 digits of the year
+		y			= year % 100, 				// last 2 digits of the year
+ 		monthCode 	= -1, 						// for 1st day calculation
+ 		w			= -1,						// 1st day of the month
+ 		numDays		= -1; 						// number of days in the month
+boolean	leapYear 	= ((year % 400 == 0)||(year % 100 != 0 && year % 4 == 0)),
 		firstWeek 	= true; 					// compensates for 'blank' days
 String 	monthName 	= ""; 						// the name of the month	
 
 
-//determines leapYear
-if (( year % 400 == 0) || (year % 100 != 0 && year % 4 == 0)){
-	leapYear = true;
-}
 
 //calculates monthCode, monthName, and numDays
 switch(month){
@@ -106,17 +101,20 @@ switch(month){
 }
 
 // calculates the first day of the month
-firstDay = (((5*yearNum) / 4) + monthCode + 1 - (2 * (monthNum % 4)) + 7) % 7; 	
+w = ( (int)Math.floor((5*y) / 4) + monthCode - (2*(c%4)) + 7 ) % 7 + 1; 	
 
 
 //Calendar Output:
 %>
-
 <div id="cal-container">
 	
 	<div class="cal-table">
     
-		<div class="cal-row cal-month"><h2><%=monthName + " " + year%></h2></div>
+		<div class="cal-row cal-month">
+			<a class="prev cal-arrow" href="#" title="Previous Month"></a>
+			<h2 id="cal-date"><%=monthName + " " + year%></h2>
+			<a class="next cal-arrow" href="#" title="Next Month"></a>
+		</div>
 		<div class="cal-row">
 			<div class="cal-cell cal-h">Sun</div>
 			<div class="cal-cell cal-h">Mon</div>
@@ -130,17 +128,18 @@ firstDay = (((5*yearNum) / 4) + monthCode + 1 - (2 * (monthNum % 4)) + 7) % 7;
 
 <%
 //continue looping until end of month)
-while (day < numDays){ 
+int d = 0;
+while (d < numDays){ 
 %>	
 		<div class="cal-row">
 <%
 	
 	//repeat 7 times before going to next row
-	for (int j = 0; j < 7 && day < numDays; j++){
+	for (int j = 0; j < 7 && d < numDays; j++){
 		
 		// adds 'blank' days on first week to start calendar on right day
 		if(firstWeek){
-			for (int k = firstDay - 1; k > 0; k--){
+			for (int k = w - 1; k > 0; k--){
 %>
 			<div class="cal-cell cal-blank"></div>
 <%
@@ -148,12 +147,12 @@ while (day < numDays){
 				firstWeek = false;
 			}//end for
 		}//end if
-		
-	   day++;
+
+	d++;
 	//OUTPUT SINLE DAY CELL
 %>
 			<div class="cal-cell">
-				<h4><%= day%></h4>
+				<h4><%= d%></h4>
 				<ul class="cal-event-list">
 <%
 	//OUTPUT EVENTS FOR CURRENT DAY
@@ -173,7 +172,7 @@ while (day < numDays){
 %>
 		</div>
 <%
-}//end while
+}//end for
 	
 	//END CALENDAR TABLE AND CONTAINER:
 %>    
