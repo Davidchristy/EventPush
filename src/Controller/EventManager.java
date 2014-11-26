@@ -85,7 +85,10 @@ public class EventManager {
 		try {
 			st = con.createStatement();
 			ResultSet rs;
-			rs = st.executeQuery("select * from Events;");
+			//this is the line you want to edit to change the ordering of the lists
+//			rs = st.executeQuery("select * from Events;");
+			rs = st.executeQuery("select * from Events ORDER BY `start-date` , `start-time` , `end-date` , `end-time` DESC;");
+
 			eventArray = new ArrayList<Event>();
 			while (rs.next()) {
 
@@ -152,7 +155,6 @@ public class EventManager {
 						eventTitle, description, startDate, startTime, endDate,
 						endTime, locationName, address, city, state, zip, lng,
 						lat));
-				System.out.println(eventArray.size());
 			}
 			rs.close();
 		} catch (SQLException e) {

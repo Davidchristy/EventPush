@@ -1,4 +1,4 @@
-	$(document).on("pageload", function() {
+	document.addEventListener("load", function() {
 			   // One-shot position request.
 			   navigator.geolocation.getCurrentPosition(callback);
 			
