@@ -263,7 +263,8 @@ public class EventManager {
 
 	}// end getEvent(int eventID)
 
-	public void addEvent(Event event) {
+	public boolean addEvent(Event event) {
+		
 		Statement st = null;
 		try {
 			st = con.createStatement();
@@ -304,7 +305,9 @@ public class EventManager {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 
 	}
 

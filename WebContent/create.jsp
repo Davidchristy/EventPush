@@ -48,7 +48,7 @@ int i=st.executeUpdate(strsnt);
 
 
 <div id="form-container">
-    <form id="new-event-form" action="/submit.jsp" method="post">
+    <form id="new-event-form" action="submit.jsp" method="post">
          
         <fieldset>
             <legend>Event Information</legend>

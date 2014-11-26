@@ -47,18 +47,23 @@ public class Event {
 	public int getEventID() {
 		return eventID;
 	}
+	
 	public void setEventID(int eventID) {
 		this.eventID = eventID;
 	}
+	
 	public int getUserID() {
 		return userID;
 	}
+	
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
+	
 	public int getCategoryID() {
 		return categoryID;
 	}
+	
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
 	}
@@ -70,92 +75,104 @@ public class Event {
 	public String getEventTitle() {
 		return eventTitle;
 	}
+	
 	public void setEventTitle(String eventTitle) {
 		this.eventTitle = eventTitle;
 	}
+	
 	public String getStartDate() {
 		return startDate;
 	}
+	
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	public String getStartTime() {
 		return startTime;
 	}
+	
 	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
+	
 	public String getEndDate() {
 		return endDate;
 	}
+	
 	public void setEndDate(String endDate) {
-		endDate = endDate;
+		this.endDate = endDate;
 	}
+	
 	public String getEndTime() {
 		return endTime;
 	}
+	
 	public void setEndTime(String endTime) {
-		endTime = endTime;
+		this.endTime = endTime;
 	}
+	
 	public String getLocationName() {
 		return locationName;
 	}
+	
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
 	}
+	
 	public String getCity() {
 		return city;
 	}
+	
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
 	public String getAddress() {
 		return address;
 	}
+	
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	public String getState() {
 		return state;
 	}
+	
 	public void setState(String state) {
 		this.state = state;
 	}
+	
 	public int getZip() {
 		return zip;
 	}
+	
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-
-
-
+	
 	public float getLng() {
 		return lng;
 	}
-
-
-
+	
 	public void setLng(float lng) {
 		this.lng = lng;
 	}
-
-
-
+	
 	public float getLat() {
 		return lat;
 	}
-
-
-
+	
 	public void setLat(float lat) {
 		this.lat = lat;
 	}
-	
 }
