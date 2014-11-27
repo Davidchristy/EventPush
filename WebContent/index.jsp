@@ -108,7 +108,10 @@
 			</div>
 
 			<div id="user-info-tab">
-				<a href="#" class="fb-login">Login</a>
+<!-- 				<a href="#" class="fb-login">Login</a> -->
+				<fb:login-button scope="public_profile,email"
+					onlogin="checkLoginState();">
+				</fb:login-button>
 			</div>
 
 			<ul id="nav">
@@ -128,10 +131,6 @@
 			<div class="fb-like" data-href="http://www.eventpushtucson.com"
 				data-layout="standard" data-action="like" data-show-faces="true"
 				data-share="true"></div>
-			<fb:login-button scope="public_profile,email"
-				onlogin="checkLoginState();">
-			</fb:login-button>
-			<div id="status"></div>
 			<p>Copyright &copy; 2014 Karin Blanford, David Christy, Sam
 				Ramirez, Joshua Solomon</p>
 		</footer>
