@@ -6,18 +6,9 @@
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/eventpush.js?v=7"></script>
 <script src="js/geolocation.js"></script>
+<script src="//connect.facebook.net/en_US/all.js"></script>
+<script src="js/facebook.js"></script>
 <div id="fb-root"></div>
-<script>
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id))
-			return;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=742983259107637&version=v2.0";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script>
 <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 
