@@ -97,5 +97,5 @@ var logout_event = function(response) {
 	console.log("logout_event");
 	console.log(response.status);
 	console.log(response);
-	alert("You have successfully logged out");
+	window.alert("You have successfully logged out");
 }
