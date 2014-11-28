@@ -25,7 +25,7 @@
 			</div>
 
 			<div id="user-info-tab">
-				<a href="#" class="fb-login" onclick="FB.login();">
+				<a href="#" class="fb-login" onclick="checkloginstate();">
 				 <!-- 				<fb:login-button --> <!-- 						scope="public_profile,email" onlogin="checkLoginState();"> --> <!-- 					</fb:login-button> -->
 
 				</a>
