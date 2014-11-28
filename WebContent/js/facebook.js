@@ -54,6 +54,8 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(function(response) {
 		statusChangeCallback(response);
 	});
+	FB.Event.subscribe('auth.login', login_event);
+	FB.Event.subscribe('auth.logout', logout_event);
 
 };
 
@@ -84,3 +86,15 @@ FB.login(function(response) {
 }, {
 	scope : 'public_profile,email'
 });
+
+var login_event = function(response) {
+	console.log("login_event");
+	console.log(response.status);
+	console.log(response);
+}
+
+var logout_event = function(response) {
+	console.log("logout_event");
+	console.log(response.status);
+	console.log(response);
+}
