@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 import java.sql.*;
-
 import javax.sql.*;
 
 import Model.Event;
@@ -18,17 +17,14 @@ public class EventManager {
 
 	public EventManager() {
 
-		/*
-		 * Duplicated code, it's horrible and I have a few hours left
-		 */
 		String DATABASE_NAME = "jdbc:mysql://eventpushdb.c5nzpaopql9i.us-west-1.rds.amazonaws.com:3306/EventPush";
-		String DATABASE_USERNAME = "eventpushroot";
+		String DATABASE_USER = "eventpushroot";
 		String DATABASE_PASS = "eventpushroot";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try {
 				con = DriverManager.getConnection(DATABASE_NAME,
-						DATABASE_USERNAME, DATABASE_PASS);
+						DATABASE_USER, DATABASE_PASS);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -36,10 +32,6 @@ public class EventManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		/*
-		 * it's good past this
-		 */
 
 		currentCenter = -1;
 		currentRadius = -1;
@@ -49,13 +41,13 @@ public class EventManager {
 	public EventManager(int center, int radius) {
 
 		String DATABASE_NAME = "jdbc:mysql://eventpushdb.c5nzpaopql9i.us-west-1.rds.amazonaws.com:3306/EventPush";
-		String DATABASE_USERNAME = "eventpushroot";
+		String DATABASE_USER = "eventpushroot";
 		String DATABASE_PASS = "eventpushroot";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try {
 				con = DriverManager.getConnection(DATABASE_NAME,
-						DATABASE_USERNAME, DATABASE_PASS);
+						DATABASE_USER, DATABASE_PASS);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,12 +61,22 @@ public class EventManager {
 		this.retrieveEvents(currentCenter, currentRadius);
 	}// end constructor with center and radius
 
+	
+	
+	
+	
+	
 	private Event[] retrieveEvents() {
 
 		// QUERY DB USING currentCenter and currentRadius
 		return null;
 	}// end retrieveEvents()
 
+	
+	
+	
+	
+	
 	private List<Event> retrieveEvents(int center, int radius) {
 
 		// set new currents
@@ -83,11 +85,18 @@ public class EventManager {
 
 		Statement st;
 		try {
+			
+			//get current sql date as a string to onlt display future events
+			java.util.Date utilDate = new java.util.Date();
+			String today = new java.sql.Date(utilDate.getTime()).toString();
+			
 			st = con.createStatement();
-			ResultSet rs;
-			//this is the line you want to edit to change the ordering of the lists
-//			rs = st.executeQuery("select * from Events;");
-			rs = st.executeQuery("select * from Events ORDER BY `start-date` , `start-time` , `end-date` , `end-time` DESC;");
+			String query = "SELECT * "
+						 + "FROM Events "
+						 + "WHERE `end-date` >= '" + today + "'"
+						 + "ORDER BY `start-date`, `start-time`, "
+						 + "`end-date`, `end-time` DESC;";
+			ResultSet rs = st.executeQuery(query);
 
 			eventArray = new ArrayList<Event>();
 			while (rs.next()) {
@@ -167,36 +176,64 @@ public class EventManager {
 		return eventArray;
 	}// end retrieveEvents(int center, int radius)
 
+	
+	
+	
+	
+	
 	public List<Event> getEventArray() {
 		return eventArray;
 	}// end getEventArray()
 
+	
+	
+	
+	
+	
 	public List<Event> getEventArray(int center, int radius) {
 		return retrieveEvents(center, radius);
 	}// end getEventArray()
 
+	
+	
+	
+	
+	
 	public void setCurrentCenter(int center) {
 		currentCenter = center;
 	}// end setCurrentCenter(int center)
 
+	
+	
+	
+	
+	
 	public void setCurrentRadius(int radius) {
 		currentRadius = radius;
 	}// end setCurrentRadius(int radius)
 
+	
+	
+	
+	
+	
 	public Event getEvent(int eID) {
 
 		Event newEvent = new Event(-1, -1, -1, "INVALID EVENT ID",
 				"INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID",
 				"INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID",
-				"INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", -1,
-				-1, -1);
+				"INVALID EVENT ID", "INVALID EVENT ID", "INVALID EVENT ID", 
+				-1, -1, -1);
 
 		Statement st;
 		try {
 			st = con.createStatement();
-			ResultSet rs;
-			rs = st.executeQuery("select * from Events where `event-id` = '"
-					+ eID + "';");
+			
+			String query = "SELECT * "
+						 + "FROM Events "
+						 + "WHERE `event-id` = '" + eID + "';";
+			
+			ResultSet rs = st.executeQuery(query);
 
 			while (rs.next()) {
 
@@ -265,6 +302,11 @@ public class EventManager {
 
 	}// end getEvent(int eventID)
 
+	
+	
+	
+	
+	
 	public boolean addEvent(Event event) {
 		
 		Statement st = null;
@@ -310,7 +352,6 @@ public class EventManager {
 			return false;
 		}
 		return true;
-
-	}
+	}//end addEvent
 
 }
