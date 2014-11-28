@@ -25,10 +25,14 @@
 			</div>
 
 			<div id="user-info-tab">
-				<a href="#" class="fb-login"> <fb:login-button
+				<!-- 				<a href="#" class="fb-login"> 
+ -->
+				<fb:login-button
 						scope="public_profile,email" onlogin="checkLoginState();">
-					</fb:login-button></a>
-			</div>
+					</fb:login-button>
+					
+<!-- 					</a>
+ -->			</div>
 
 			<ul id="nav">
 				<li id="list-tab" title="List"><a href="#" class="current">List</a></li>
