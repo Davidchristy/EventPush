@@ -25,7 +25,15 @@
 			</div>
 
 			<div id="user-info-tab">
-				<a href="#" class="fb-login"> </a>
+				<a href="#" class="fb-login"></a> <input type="button" value="Login"
+					onclick="FB.login();" class="fb-login"> <input
+					type="button" value="Logout" onclick="FB.logout();"
+					class="fb-login">
+				<!-- 				<fb:login-button scope="public_profile,email" -->
+				<!-- 					onlogin="checkLoginState();"> -->
+				<!-- 				</fb:login-button> -->
+
+
 			</div>
 
 			<ul id="nav">
@@ -42,9 +50,6 @@
 
 
 		<footer id="footer-container">
-			<fb:login-button scope="public_profile,email"
-				onlogin="checkLoginState();">
-			</fb:login-button>
 			<!-- 			<div class="fb-like" data-href="http://www.eventpushtucson.com" -->
 			<!-- 				data-layout="standard" data-action="like" data-show-faces="true" -->
 			<!-- 				data-share="true"></div> -->

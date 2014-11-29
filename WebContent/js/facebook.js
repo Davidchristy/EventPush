@@ -54,6 +54,8 @@ window.fbAsyncInit = function() {
 	FB.getLoginStatus(function(response) {
 		statusChangeCallback(response);
 	});
+	FB.Event.subscribe('auth.login', login_event);
+	FB.Event.subscribe('auth.logout', logout_event);
 
 };
 
@@ -77,4 +79,22 @@ function testAPI() {
 		document.getElementById('status').innerHTML = 'Thanks for logging in, '
 				+ response.name + '!';
 	});
+}
+
+FB.login(function(response) {
+	// handle the response
+}, {
+	scope : 'public_profile,email'
+});
+
+var login_event = function(response) {
+	console.log("login_event");
+	console.log(response.status);
+	console.log(response);
+}
+
+var logout_event = function(response) {
+	console.log("logout_event");
+	console.log(response.status);
+	console.log(response);
 }
