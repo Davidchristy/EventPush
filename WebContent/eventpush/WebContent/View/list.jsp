@@ -9,7 +9,7 @@
 	int currentLocation = -1;
 	int currentRadius = -1;
 	EventManager eventRetriever = new EventManager(currentLocation, currentRadius);
-	List<Event> currentEvents = eventRetriever.getEventArray();
+	List<Event> currentEvents = eventRetriever.getEventList();
 %>
 
 <div class="list-column">

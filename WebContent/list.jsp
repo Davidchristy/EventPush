@@ -5,11 +5,14 @@
 
 
 <%
-	int currentLocation = -1;
-	int currentRadius 	= -1;
-	EventManager eventRetriever = new EventManager(currentLocation, currentRadius);
-	List<Event> upcomingEvents 	= eventRetriever.getEventArray();
-	List<Event> nearbyEvents 	= eventRetriever.getEventArray();
+	float 	currentLng 	= -1; //TODO get real coordinates
+	float 	currentLat 	= -1; //TODO get real coordinates
+	int 	currentRad	= -1; //TODO get value from radius field
+	//EventManager eventManager = new EventManager(currentLng, currentLat, currentRad);
+	//default constructor shows 25 miles from GS
+	EventManager eventManager = new EventManager(); 
+	List<Event>  upcomingEvents = eventManager.getEventList();
+	List<Event>  nearbyEvents	= eventManager.orderEventListBy("distance");
 %>
 
 <div class="list-column">
