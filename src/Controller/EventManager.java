@@ -12,7 +12,6 @@ public class EventManager{
 
 // Instance Variables
 	
-	private int 		userID;
 	private float 		currentLng;
 	private float 		currentLat;
 	private int 		currentRadius;
@@ -71,7 +70,7 @@ public class EventManager{
 		currentLng		= lng;
 		currentLat 		= lat;
 		currentRadius 	= radius;
-		eventList		= this.fetchEvents(currentLat, currentLng, currentRadius, "date");
+		eventList		= this.fetchEvents(currentLng, currentLat, currentRadius, "date");
 	}// end constructor with lng, lat, and radius	
 
 	
@@ -144,7 +143,7 @@ public class EventManager{
 						 + "WHERE `event-id` = '" + eID + "';";
 			
 			
-			////System.out.println("\n" + query + "\n");
+			//System.out.println("\n" + query + "\n");
 			ResultSet rs = st.executeQuery(query);
 
 			while (rs.next()){
@@ -244,7 +243,7 @@ public class EventManager{
 					 + event.getLng() + "','" 
 					 + event.getLat() + "');";
 		
-		////System.out.println("\n INSERT QUERY" + query + "\n");
+		//System.out.println("\n INSERT QUERY" + query + "\n");
 		
 		try{
 			st.executeUpdate(query);
@@ -305,7 +304,7 @@ public class EventManager{
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				////System.out.println("\n" + query + "\n");
+				//System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();
@@ -415,7 +414,7 @@ public class EventManager{
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				////System.out.println("\n" + query + "\n");
+				//System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();
@@ -518,7 +517,7 @@ public class EventManager{
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				////System.out.println("\n" + query + "\n");
+				//System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();

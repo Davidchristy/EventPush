@@ -13,11 +13,10 @@
 	int   rad = Integer.parseInt((request.getParameter("rad")));
 	
 	EventManager eventRetriever = new EventManager(lng, lat, rad);
-	List<Event> eventList = eventRetriever.getEventListFrom(year, month, day);
+	ArrayList<Event> eventList = eventRetriever.getEventListFrom(year, month, day);
 %>
 
 <div id="single-event-container">
-
 <%  for(int i = 0; i < eventList.size(); i++ ){ %>
 
 	<div class="single-event-box">

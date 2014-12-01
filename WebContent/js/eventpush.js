@@ -7,8 +7,6 @@
 
 jQuery(document).ready(function($) {
 
-	/* alert("?v=7"); */
-
 	var defaultView = "list";
 	// Load default view:
 	changeContentHtmlTo(defaultView);
@@ -97,6 +95,8 @@ jQuery(document).ready(function($) {
 		});
 	}// end singleEventBox(eventID)
 		
+	
+	
 	/***************************************************************************
 	 * 
 	 * If an element with the class open-single is clicked, get the eventID from
@@ -108,13 +108,12 @@ jQuery(document).ready(function($) {
 
 		var url = $(this).attr("href");
 		dailyEventBox(url);
-		
 		return false;
 	});// end click open-daily
 
 	/***************************************************************************
 	 * 
-	 * Adds the single event box to the page body.
+	 * Adds the single day box to the page body.
 	 *
 	 **************************************************************************/
 
@@ -126,6 +125,8 @@ jQuery(document).ready(function($) {
 			$("body").append(html);
 		});
 	}// end dailyEventBox(url)
+	
+	
 	
 	/***************************************************************************
 	 * 
@@ -181,6 +182,65 @@ jQuery(document).ready(function($) {
 		});
 	});// end click prev-arrow
 
+	
+	
+	
+	/***************************************************************************
+	 * 
+	 * Submits the create form to itself via ajax
+	 *  
+	 **************************************************************************/
+
+	$('body').on('click', '#submit', function() {
+		
+		console.log("SUMBITING:");
+
+		var eventTitle 	 = $("#event-title").val();
+		var description  = $("#description").val();
+		var category 	 = $("#category-id").val();
+		var startDate	 = $("#start-date").val();
+		var startTime	 = $("#start-time").val();
+		var endDate		 = $("#end-date").val();
+		var endTime		 = $("#end-time").val();
+		var locationName = $("#location-name").val();
+		var address		 = $("#address").val();
+		var city		 = $("#city").val();
+		var state		 = $("#state").val();
+		var zip			 = $("#zip").val();
+		
+		var dataString = 'event-title=' + eventTitle  +
+						 '&description=' + description +
+						 '&category-id=' + category +
+						 '&start-date=' + startDate +
+						 '&start-time=' + startTime +
+						 '&end-date=' + endDate +
+						 '&end-time=' + endTime +
+						 '&location-name=' + locationName +
+						 '&address=' + address + 
+						 '&city=' + city +
+						 '&state=' + state +
+						 '&zip=' + zip +
+						 '&submit=ajax';
+		
+		console.log(dataString);
+						 
+		$.ajax({
+			type: "POST",
+			url : "create.jsp",
+			data: dataString,
+			cache: false
+		}).done(function(html) {
+			$("#content-container").html(html);
+		});
+		$('body,html').animate({scrollTop: 0}, 500);
+		return false;
+	});// end click open-daily
+	
+	
+	
+	
+	
+	
 
 	
 	/***************************************************************************

@@ -25,6 +25,9 @@ String currentDate 	= String.format("%d-%02d-01", year, month);
 EventManager eventManager = new EventManager(); 
 ArrayList<Event>  eventList = eventManager.getEventListFrom(year, month);
 
+float lng = eventManager.getLng();
+float lat = eventManager.getLat();
+int	  rad = eventManager.getRadius();
 int numEvents = eventList.size();
 int curEvent  = 0;
 int d = 0;
@@ -192,7 +195,8 @@ while (d < numDays){
 <% 		
 		}else if(dailyEventCount > dispNum){
 			
-			String getArgs="yr=" + year + "&mn=" + month + "&dy=" + d;
+			String getArgs="yr=" + year + "&mn=" + month + "&dy=" 
+						  + d + "&lng=" + lng + "&lat=" + lat + "&rad=" + rad;
 		
 %>
 				<li>

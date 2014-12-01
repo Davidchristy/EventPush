@@ -457,7 +457,7 @@ textarea{
 }
 
 
-/* Single / Day Event Box */
+/* Single / Daily Event Box */
 
 #single-event-container{
 	position: fixed;	
@@ -466,7 +466,7 @@ textarea{
 	left: 0;
 	right: 0;
 	top: 0;
-	ocerflow: scroll;
+	overflow: scroll;
 }
 
 .single-event-box{
