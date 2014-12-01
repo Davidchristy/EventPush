@@ -6,7 +6,7 @@
 <%@page import="AddressConverter.GoogleResponse"%>
 <%@page import="AddressConverter.Result"%>
 
-
+<script src="js/facebook.js"></script>
 <div id="form-container">
 <% 
 if (request.getParameter("submit") != null) {
@@ -160,4 +160,5 @@ if (request.getParameter("submit") != null) {
     	<input type="submit" id="submit" name="submit" value="Submit" />
     </div>
 </form>
+
 </div>
