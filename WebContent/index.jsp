@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<div id="fb-root"></div>
+	<div id="fb-root"></div>
 
 	<div id="container">
 		<header id="header-container">
@@ -22,10 +22,7 @@
 			</div>
 
 			<div id="user-info-tab">
-				<a href="#" class="fb-login"></a> <input type="button" value="Login"
-					onclick="FB.login();" class="fb-login"> <input
-					type="button" value="Logout" onclick="FB.logout();"
-					class="fb-login">
+<fb:login-button autologoutlink="true"></fb:login-button>
 				<!-- 				<fb:login-button scope="public_profile,email" -->
 				<!-- 					onlogin="checkLoginState();"> -->
 				<!-- 				</fb:login-button> -->
