@@ -20,8 +20,12 @@ int		c 			= year / 100,				// first 2 digits of the year
 boolean	leapYear 	= ((year % 400 == 0)||(year % 100 != 0 && year % 4 == 0)),
 		firstWeek 	= true; 					// compensates for 'blank' days
 String 	monthName 	= ""; 						// the name of the month	
-
-
+String currentDate 	= String.format("%d-%02d-01", year, month);
+				
+EventManager eventManager = new EventManager(); 
+List<Event>  eventList = eventManager.getEventListFrom(year, month);
+int numEvents = eventList.size();
+int curEvent  = 0;
 
 //calculates monthCode, monthName, and numDays
 switch(month){
@@ -103,7 +107,6 @@ switch(month){
 // calculates the first day of the month
 w = ( (int)Math.floor((5*y) / 4) + monthCode - (2*(c%4)) + 7 ) % 7 + 1; 	
 
-
 //Calendar Output:
 %>
 <div id="cal-container">
@@ -130,6 +133,7 @@ w = ( (int)Math.floor((5*y) / 4) + monthCode - (2*(c%4)) + 7 ) % 7 + 1;
 //continue looping until end of month)
 int d = 0;
 while (d < numDays){ 
+	int dailyEventCount = 0;
 %>	
 		<div class="cal-row">
 <%
@@ -148,32 +152,60 @@ while (d < numDays){
 			}//end for
 		}//end if
 
-	d++;
-	//OUTPUT SINLE DAY CELL
+		d++;
+		currentDate = String.format("%d-%02d-%02d", year, month, d);
+		//OUTPUT SINLE DAY CELL
 %>
 			<div class="cal-cell">
 				<h4><%= d%></h4>
 				<ul class="cal-event-list">
 <%
-	//OUTPUT EVENTS FOR CURRENT DAY
-	//TODO Method to get events for each day
+		//OUTPUT EVENTS FOR CURRENT DAY
+		while(curEvent < numEvents && 
+			eventList.get(curEvent).getStartDate().equals(currentDate)){
+	
+			if(dailyEventCount < 4){
+	%>
+					<li>
+						<a href="#" id="<%= eventList.get(curEvent).getEventID()%>" class="open-single">
+							<%= eventList.get(curEvent).getStartTime()%>
+						</a>
+					</li>
+	<%		}
+		curEvent++;
+		dailyEventCount++;
+		}//end while	
+		
+		if(dailyEventCount == 4){
+%>		
+				<li>
+					<a href="#" id="<%= eventList.get(curEvent).getEventID()%>" class="open-single">
+						<%= eventList.get(curEvent).getStartTime()%>
+					</a>
+				</li>		
+<% 		
+			curEvent++;
+		}else if(dailyEventCount > 4){
+			
+			String getArgs="yr=" + year + "&mn=" + month + "&dy=" + d;
+		
 %>
-					<li><a href="#" id="00" class="open-single">00:00AM</a></li>
-					<li><a href="#" id="00" class="open-single">00:00AM</a></li>
-					<li><a href="#" id="00" class="open-single">00:00AM</a></li>
-					<li><a href="#" id="00" class="open-single">00:00AM</a></li>
+				<li>
+					<a href="single-day.jsp?<%=getArgs %>" class="open-daily">See all events...</a>
+				</li>
+<% 		
+		}//end if/esle
+		
+%>
 				</ul>
 			</div>
-
 <%	
 	}//end for
-	
 	//END ROW
 %>
 		</div>
 <%
-}//end for
-	
+}//end while
 	//END CALENDAR TABLE AND CONTAINER:
 %>    
 	</div>

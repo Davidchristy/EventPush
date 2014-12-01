@@ -7,7 +7,7 @@
 	int currentEventID	= Integer.parseInt(request.getParameter("eid"));
 	int currentLocation	= -1;
 	int currentRadius	= -1;
-	EventManager eventRetriever = new EventManager(currentLocation, currentRadius);
+	EventManager eventRetriever = new EventManager();
 	Event currentEvent = eventRetriever.getEvent(currentEventID);
 %>
 
