@@ -22,7 +22,7 @@
 			</div>
 
 			<div id="user-info-tab">
-<fb:login-button autologoutlink="true"></fb:login-button>
+				<fb:login-button autologoutlink="true"></fb:login-button>
 				<!-- 				<fb:login-button scope="public_profile,email" -->
 				<!-- 					onlogin="checkLoginState();"> -->
 				<!-- 				</fb:login-button> -->

@@ -87,6 +87,23 @@ FB.login(function(response) {
 	scope : 'public_profile,email'
 });
 
+FB.checkLoginOnSubmit(function(response) {
+	if (response.status === 'connected') {
+		// the user is logged in and has authenticated your
+		// app, and response.authResponse supplies
+		// the user's ID, a valid access token, a signed
+		// request, and the time the access token
+		// and signed request each expire
+		var uid = response.authResponse.userID;
+		var accessToken = response.authResponse.accessToken;
+	} else if (response.status === 'not_authorized') {
+		alert("You must log into Facebook to continue");
+	} else {
+		alert("Click login to continue");
+
+	}
+});
+
 var login_event = function(response) {
 	console.log("login_event");
 	console.log(response.status);
