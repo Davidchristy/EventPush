@@ -34,7 +34,8 @@ jQuery(document).ready(function($) {
 
 		var clickedTitle = $(this).attr("title");
 		changeContentHtmlTo(clickedTitle);
-
+		
+		return false;
 	});// end click top_tag
 
 	/***************************************************************************
@@ -69,13 +70,15 @@ jQuery(document).ready(function($) {
 	 * 
 	 * If an element with the class open-single is clicked, get the eventID from
 	 * the element's ID property and call the singleEventBoxFunction
-	 *  /
+	 *  
 	 **************************************************************************/
 
 	$('body').on('click', '.open-single', function() {
 
 		var clickedID = $(this).attr("id");
 		singleEventBox(clickedID);
+		
+		return false;
 	});// end click open-single
 
 	/***************************************************************************
@@ -93,7 +96,37 @@ jQuery(document).ready(function($) {
 			$("body").append(html);
 		});
 	}// end singleEventBox(eventID)
+		
+	/***************************************************************************
+	 * 
+	 * If an element with the class open-single is clicked, get the eventID from
+	 * the element's ID property and call the dailyEventBoxFunction
+	 *  
+	 **************************************************************************/
 
+	$('body').on('click', '.open-daily', function() {
+
+		var url = $(this).attr("href");
+		dailyEventBox(url);
+		
+		return false;
+	});// end click open-daily
+
+	/***************************************************************************
+	 * 
+	 * Adds the single event box to the page body.
+	 *
+	 **************************************************************************/
+
+	function dailyEventBox(url) {
+
+		$.ajax({
+			url : url
+		}).done(function(html) {
+			$("body").append(html);
+		});
+	}// end dailyEventBox(url)
+	
 	/***************************************************************************
 	 * 
 	 * Removes the single event box to the page body when the

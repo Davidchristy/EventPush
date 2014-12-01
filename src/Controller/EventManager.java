@@ -13,9 +13,10 @@ public class EventManager{
 
 // Instance Variables
 	
-	private float 	currentLng;
-	private float 	currentLat;
-	private int 	currentRadius;
+	private int 		userID;
+	private float 		currentLng;
+	private float 		currentLat;
+	private int 		currentRadius;
 	private List<Event> eventList;
 	private java.sql.Connection con;
 
@@ -101,12 +102,23 @@ public class EventManager{
 // Public Methods	
 	
 		
-		public List<Event> orderEventListBy(String order){
+	public List<Event> orderEventListBy(String order){
+	
+		eventList = this.fetchEvents(currentLng, currentLat, currentRadius, order);
+		return eventList;
+	}
 		
-			eventList = this.fetchEvents(currentLng, currentLat, currentRadius, order);
-			return eventList;
-		}
+	public List<Event> getEventListFrom(int year, int month){
 		
+		eventList = this.fetchEvents(currentLng, currentLat, currentRadius, year, month);
+		return eventList;
+	}
+	
+	public List<Event> getEventListFrom(int year, int month, int day){
+		
+		eventList = this.fetchEvents(currentLng, currentLat, currentRadius, year, month, day);
+		return eventList;
+	}
 		
 	public Event getEvent(int eID){
 
@@ -188,7 +200,6 @@ public class EventManager{
 		}
 
 		return newEvent;
-
 	}// end getEvent(int eventID)
 	
 	
@@ -236,7 +247,10 @@ public class EventManager{
 	}//end addEvent
 
 	
-
+	
+	
+	
+	
 // Private / Helper methods
 	
 		private List<Event> fetchEvents(float lng, float lat, int radius, String order){
@@ -249,7 +263,7 @@ public class EventManager{
 			Statement st;
 			try{
 				
-				//get current sql date as a string to onlt display future events
+				//get current sql date as a string to only display future events
 				java.util.Date utilDate = new java.util.Date();
 				String today = new java.sql.Date(utilDate.getTime()).toString();
 				
@@ -275,10 +289,10 @@ public class EventManager{
 							 + "`end-date`, `end-time`, `distance` DESC";
 				}
 				
-				String query = "SELECT *, (" + distForm + ") as `distance`"
+				String query = "SELECT *, (" + distForm + ") as `distance` "
 						 + "FROM Events, "
 						 + "HAVING `distance` < " + radius + " "
-						 + "WHERE `end-date` >= '" + today + "'"
+						 + "WHERE `end-date` >= '" + today + "' "
 						 + "ORDER BY " + orderString + ";";
 				
 				
@@ -337,16 +351,6 @@ public class EventManager{
 														// dates' and times'
 					}
 					
-					/*
-					 * Double tempLng = Double.parseDouble((String)
-					 * rs.getObject("lng")); double lng = -1; if(tempLng != null){
-					 * lng = tempLng.doubleValue(); }
-					 * 
-					 * Double tempLat = Double.parseDouble((String)
-					 * rs.getObject("lat")); double lat = -1; if(tempLat != null){
-					 * lat = tempLat.doubleValue(); }
-					 */
-
 					eventList.add(new Event(eventID, userID, categoryID,
 							eventTitle, description, startDate, startTime, endDate,
 							endTime, locationName, address, city, state, zip, eLng,
@@ -357,11 +361,222 @@ public class EventManager{
 				e.printStackTrace();
 			}
 
-			// QUERY DB USING center and radius....one day, but not today.
-
 			return eventList;
 		}// end retrieveEvents(float lng, float lat, int radius)
 		
+		
+		
+		
+		private List<Event> fetchEvents(float lng, float lat, int radius, int year, int month){
+
+			// set new currents
+			currentLng		= lng;
+			currentLat 		= lat;
+			currentRadius 	= radius;
+
+			Statement st;
+			try{
+			
+				st = con.createStatement();
+	
+				String start = year + "-" + month + "-01";
+				String end;
+				if(month == 12){
+					end = year+1 + "-01-01";
+				}else{
+					end = year + "-" + month+1 + "-01";
+				}
+				
+				String distForm = "3959 * acos( " //3959 converts to miles
+						+ "cos(radians(" + lat + ")) * "
+						+ "cos(radians(lat)) * "
+						+ "cos(radians(lng) "
+						+ "- radians(" + lng + ")) + "
+						+ "sin(radians(" + lat + ")) * "
+						+ "sin(radians(lat)))";
+
+				String orderString = "`start-date`, `start-time`, "
+							 + "`end-date`, `end-time`, `distance` DESC";
+
+				String query = "SELECT *, (" + distForm + ") as `distance` "
+						 + "FROM Events, "
+						 + "HAVING `distance` < " + radius + " "
+						 + "WHERE `start-date` >= '" + start + "' "
+						 + "AND `start-date` < '" + end + "' "
+						 + "ORDER BY " + orderString + ";";
+				
+				
+				
+				ResultSet rs = st.executeQuery(query);
+
+				eventList = new ArrayList<Event>();
+				while (rs.next()){
+
+					int eventID = (int) rs.getObject("event-id");
+					int userID = (int) rs.getObject("user-id");
+					int categoryID = (int) rs.getObject("category-id");
+					String eventTitle = (String) rs.getObject("event-title");
+					String description = (String) rs.getObject("description");
+					String locationName = (String) rs.getObject("location-name");
+					String address = (String) rs.getObject("address");
+					String city = (String) rs.getObject("city");
+					String state = (String) rs.getObject("state");
+					float eLng = rs.getFloat("lng");
+					float eLat = rs.getFloat("lat");
+
+					/*
+					 * Use this set up for the rest of this!
+					 */
+					Object tempO = rs.getObject("zip");
+					int zip = 0;
+					if (tempO != null){
+						zip = (int) tempO;
+					}
+
+					Date tempDate = (Date) rs.getObject("start-date");
+					String startDate = "---";
+					if (tempDate != null){
+						startDate = tempDate.toString(); // might want to change
+															// dates' and times'
+					}
+
+					Time tempTime = (Time) rs.getObject("start-time");
+					String startTime = "---";
+					if (tempTime != null){
+						startTime = tempTime.toString(); // might want to change
+															// dates' and times'
+					}
+
+					tempDate = (Date) rs.getObject("end-date");
+					String endDate = "---";
+					if (tempDate != null){
+						endDate = tempDate.toString(); // might want to change
+														// dates' and times'
+					}
+
+					tempTime = (Time) rs.getObject("end-time");
+					String endTime = "---";
+					if (tempTime != null){
+						endTime = tempTime.toString(); // might want to change
+														// dates' and times'
+					}
+					
+					
+					eventList.add(new Event(eventID, userID, categoryID,
+							eventTitle, description, startDate, startTime, endDate,
+							endTime, locationName, address, city, state, zip, eLng,
+							eLat));
+				}
+				rs.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+
+			return eventList;
+		}// end fetchEvents(float lng, float lat, int radius, int year, int month)
+		
+		
+		
+		private List<Event> fetchEvents(float lng, float lat, int radius, int year, int month, int day){
+
+			// set new currents
+			currentLng		= lng;
+			currentLat 		= lat;
+			currentRadius 	= radius;
+
+			Statement st;
+			try{
+
+				st = con.createStatement();
+				
+				String date = year + "-" + month + "-" + day;
+				
+				String distForm = "3959 * acos( " //3959 converts to miles
+						+ "cos(radians(" + lat + ")) * "
+						+ "cos(radians(lat)) * "
+						+ "cos(radians(lng) "
+						+ "- radians(" + lng + ")) + "
+						+ "sin(radians(" + lat + ")) * "
+						+ "sin(radians(lat)))";
+
+				String orderString = "`start-date`, `start-time`, "
+							 + "`end-date`, `end-time`, `distance` DESC";
+
+				String query = "SELECT *, (" + distForm + ") as `distance` "
+						 + "FROM Events, "
+						 + "HAVING `distance` < " + radius + " "
+						 + "WHERE `start-date` = '" + date + "' "
+						 + "ORDER BY " + orderString + ";";
+				
+				
+				
+				ResultSet rs = st.executeQuery(query);
+
+				eventList = new ArrayList<Event>();
+				while (rs.next()){
+
+					int eventID = (int) rs.getObject("event-id");
+					int userID = (int) rs.getObject("user-id");
+					int categoryID = (int) rs.getObject("category-id");
+					String eventTitle = (String) rs.getObject("event-title");
+					String description = (String) rs.getObject("description");
+					String locationName = (String) rs.getObject("location-name");
+					String address = (String) rs.getObject("address");
+					String city = (String) rs.getObject("city");
+					String state = (String) rs.getObject("state");
+					float eLng = rs.getFloat("lng");
+					float eLat = rs.getFloat("lat");
+
+					/*
+					 * Use this set up for the rest of this!
+					 */
+					Object tempO = rs.getObject("zip");
+					int zip = 0;
+					if (tempO != null){
+						zip = (int) tempO;
+					}
+
+					Date tempDate = (Date) rs.getObject("start-date");
+					String startDate = "---";
+					if (tempDate != null){
+						startDate = tempDate.toString(); // might want to change
+															// dates' and times'
+					}
+
+					Time tempTime = (Time) rs.getObject("start-time");
+					String startTime = "---";
+					if (tempTime != null){
+						startTime = tempTime.toString(); // might want to change
+															// dates' and times'
+					}
+
+					tempDate = (Date) rs.getObject("end-date");
+					String endDate = "---";
+					if (tempDate != null){
+						endDate = tempDate.toString(); // might want to change
+														// dates' and times'
+					}
+
+					tempTime = (Time) rs.getObject("end-time");
+					String endTime = "---";
+					if (tempTime != null){
+						endTime = tempTime.toString(); // might want to change
+														// dates' and times'
+					}
+					
+					
+					eventList.add(new Event(eventID, userID, categoryID,
+							eventTitle, description, startDate, startTime, endDate,
+							endTime, locationName, address, city, state, zip, eLng,
+							eLat));
+				}
+				rs.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+
+			return eventList;
+		}// end fetchEvents(float lng, float lat, int radius, int year, int month, int day)
 		
 
 }//end EventManager
