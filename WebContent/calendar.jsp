@@ -24,8 +24,12 @@ String currentDate 	= String.format("%d-%02d-01", year, month);
 				
 EventManager eventManager = new EventManager(); 
 ArrayList<Event>  eventList = eventManager.getEventListFrom(year, month);
+
 int numEvents = eventList.size();
 int curEvent  = 0;
+int d = 0;
+int dailyEventCount = 0;
+int dispNum = 5;
 
 //calculates monthCode, monthName, and numDays
 switch(month){
@@ -131,16 +135,15 @@ w = ( (int)Math.floor((5*y) / 4) + monthCode - (2*(c%4)) + 7 ) % 7 + 1;
 
 <%
 //continue looping until end of month)
-int d = 0;
+
 while (d < numDays){ 
-	int dailyEventCount = 0;
 %>	
 		<div class="cal-row">
 <%
 	
 	//repeat 7 times before going to next row
 	for (int j = 0; j < 7 && d < numDays; j++){
-		
+		dailyEventCount = 0;
 		// adds 'blank' days on first week to start calendar on right day
 		if(firstWeek){
 			for (int k = w - 1; k > 0; k--){
@@ -163,35 +166,37 @@ while (d < numDays){
 		//OUTPUT EVENTS FOR CURRENT DAY
 		while(curEvent < numEvents && 
 			eventList.get(curEvent).getStartDate().equals(currentDate)){
-	
-			if(dailyEventCount < 4){
+			dailyEventCount++;
+			if(dailyEventCount < dispNum){
 	%>
 					<li>
 						<a href="#" id="<%= eventList.get(curEvent).getEventID()%>" class="open-single">
-							<%= eventList.get(curEvent).getStartTime()%>
+							<%= eventList.get(curEvent).getEventTitle() %>
 						</a>
 					</li>
-	<%		}
-		curEvent++;
-		dailyEventCount++;
+					
+<%	
+			}
+
+			curEvent++;
+			
 		}//end while	
 		
-		if(dailyEventCount == 4){
+		if(dailyEventCount == dispNum){
 %>		
 				<li>
 					<a href="#" id="<%= eventList.get(curEvent).getEventID()%>" class="open-single">
-						<%= eventList.get(curEvent).getStartTime()%>
+						<%= eventList.get(curEvent).getEventTitle()%>
 					</a>
 				</li>		
 <% 		
-			curEvent++;
-		}else if(dailyEventCount > 4){
+		}else if(dailyEventCount > dispNum){
 			
 			String getArgs="yr=" + year + "&mn=" + month + "&dy=" + d;
 		
 %>
 				<li>
-					<a href="single-day.jsp?<%=getArgs %>" class="open-daily">See all events...</a>
+					<a href="single-day.jsp?<%=getArgs %>" class="open-daily">See more...</a>
 				</li>
 <% 		
 		}//end if/esle

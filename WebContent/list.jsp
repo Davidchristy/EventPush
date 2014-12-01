@@ -11,9 +11,6 @@
 	//EventManager eventManager = new EventManager(currentLng, currentLat, currentRad);
 	//default constructor shows 25 miles from GS
 	EventManager eventManager = new EventManager(); 
-	System.out.println(eventManager.getRadius());
-	System.out.println(eventManager.getLng());
-	System.out.println(eventManager.getLat());
 	ArrayList<Event>  upcomingEvents = eventManager.orderEventListBy("date");
 	System.out.println(upcomingEvents.size());
 	ArrayList<Event>  nearbyEvents	 = eventManager.orderEventListBy("distance");

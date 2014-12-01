@@ -144,7 +144,7 @@ public class EventManager{
 						 + "WHERE `event-id` = '" + eID + "';";
 			
 			
-			System.out.println("\n" + query + "\n");
+			////System.out.println("\n" + query + "\n");
 			ResultSet rs = st.executeQuery(query);
 
 			while (rs.next()){
@@ -201,8 +201,7 @@ public class EventManager{
 				newEvent = new Event(eventID, userID, categoryID, eventTitle,
 						description, startDate, startTime, endDate, endTime,
 						locationName, address, city, state, zip, lng, lat);
-				System.out.println(newEvent.getEventTitle()
-						+ "Has Been Created as a New Event Object");
+				//System.out.println(newEvent.getEventTitle() + " has been created as a New Event Object");
 			}
 			rs.close();
 		}catch(SQLException e){
@@ -245,7 +244,7 @@ public class EventManager{
 					 + event.getLng() + "','" 
 					 + event.getLat() + "');";
 		
-		System.out.println("\n INSERT QUERY" + query + "\n");
+		////System.out.println("\n INSERT QUERY" + query + "\n");
 		
 		try{
 			st.executeUpdate(query);
@@ -306,7 +305,7 @@ public class EventManager{
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				System.out.println("\n" + query + "\n");
+				////System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();
@@ -416,7 +415,7 @@ public class EventManager{
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				System.out.println("\n" + query + "\n");
+				////System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();
@@ -519,7 +518,7 @@ public class EventManager{
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				System.out.println("\n" + query + "\n");
+				////System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();
