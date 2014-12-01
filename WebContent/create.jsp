@@ -59,8 +59,7 @@
 			</div>
 		</fieldset>
 		<div class="submit-container">
-			<input type="submit" id="submit" name="submit" value="Submit"
-				onclick="checkLoginOnSubmit()" />
+			<input type="submit" id="submit" name="submit" value="Submit" />
 		</div>
 	</form>
 </div>
