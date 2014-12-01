@@ -18,6 +18,28 @@ public class Event {
 	private float	lng;
 	private float	lat;
 	
+	
+	public Event(){
+	
+	this.eventID 	 	= -1;
+	this.userID 	 	= -1;
+	this.categoryID	 	= -1;
+	this.eventTitle	 	= "-1";
+	this.description 	= "-1";
+	this.startDate 	 	= "-1";
+	this.startTime 	 	= "-1";
+	this.endDate	 	= "-1";
+	this.endTime		= "-1";
+	this.locationName 	= "-1";
+	this.address 		= "-1";
+	this.city 			= "-1";
+	this.state 			= "-1";
+	this.zip 			= -1;
+	this.lng 			= -1;
+	this.lat 			= -1;
+	
+	}
+	
 	public Event(int eventID, int userID, int categoryID, String eventTitle, 
 				 String description, String startDate, String startTime, 
 				 String endDate, String endTime, String locationName, 
@@ -37,8 +59,8 @@ public class Event {
 		this.city 			= city;
 		this.state 			= state;
 		this.zip 			= zip;
-		this.setLng(lng);
-		this.setLat(lat);
+		this.lng 			= lng;
+		this.lat			= lat;
 		
 	}
 	

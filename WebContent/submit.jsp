@@ -11,8 +11,7 @@
 	String timeStr = "time = 6";
 	int currentLocation = -1;
 	int currentRadius = -1;
-	EventManager eventAdder = new EventManager(currentLocation,
-	currentRadius);
+	EventManager eventAdder = new EventManager();
 	int eventID = -1;
 	int userID = 0;
 	int categoryID = Integer.parseInt(request.getParameter("category-id"));

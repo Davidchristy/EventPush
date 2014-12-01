@@ -8,14 +8,11 @@
 <script src="js/geolocation.js"></script>
 <script src="//connect.facebook.net/en_US/all.js"></script>
 <script src="js/facebook.js"></script>
-<div id="fb-root"></div>
 <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 
 <body>
-	<script>
-		
-	</script>
+<div id="fb-root"></div>
 
 	<div id="container">
 		<header id="header-container">

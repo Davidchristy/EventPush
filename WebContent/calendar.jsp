@@ -23,7 +23,7 @@ String 	monthName 	= ""; 						// the name of the month
 String currentDate 	= String.format("%d-%02d-01", year, month);
 				
 EventManager eventManager = new EventManager(); 
-List<Event>  eventList = eventManager.getEventListFrom(year, month);
+ArrayList<Event>  eventList = eventManager.getEventListFrom(year, month);
 int numEvents = eventList.size();
 int curEvent  = 0;
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 import java.sql.*;
-
 import javax.sql.*;
 
 import Model.Event;
@@ -17,7 +16,7 @@ public class EventManager{
 	private float 		currentLng;
 	private float 		currentLat;
 	private int 		currentRadius;
-	private List<Event> eventList;
+	private ArrayList<Event> eventList;
 	private java.sql.Connection con;
 
 	
@@ -47,7 +46,7 @@ public class EventManager{
 		currentLat 		= (float) 32.2297642;
 		currentLng 		= (float) -110.95486390000002;
 		currentRadius 	= 25;
-		this.fetchEvents(currentLat, currentLng, currentRadius, "date");
+		eventList 		= this.fetchEvents(currentLng, currentLat, currentRadius, "date");
 	}// end default constructor
 	
 	
@@ -72,7 +71,7 @@ public class EventManager{
 		currentLng		= lng;
 		currentLat 		= lat;
 		currentRadius 	= radius;
-		this.fetchEvents(currentLat, currentLng, currentRadius, "date");
+		eventList		= this.fetchEvents(currentLat, currentLng, currentRadius, "date");
 	}// end constructor with lng, lat, and radius	
 
 	
@@ -80,7 +79,7 @@ public class EventManager{
 	
 // Getters / Setters	
 	
-		public List<Event> getEventList(){
+		public ArrayList<Event> getEventList(){
 			return eventList;
 		}// end getEventArray()
 
@@ -95,6 +94,15 @@ public class EventManager{
 			currentRadius = radius;
 		}// end setCurrentRadius(int radius)
 		
+		public int getRadius(){
+			return currentRadius;
+		}
+		public float getLng(){
+			return currentLng;
+		}
+		public float getLat(){
+			return currentLat;
+		}
 		
 		
 		
@@ -102,19 +110,19 @@ public class EventManager{
 // Public Methods	
 	
 		
-	public List<Event> orderEventListBy(String order){
+	public ArrayList<Event> orderEventListBy(String order){
 	
 		eventList = this.fetchEvents(currentLng, currentLat, currentRadius, order);
 		return eventList;
 	}
 		
-	public List<Event> getEventListFrom(int year, int month){
+	public ArrayList<Event> getEventListFrom(int year, int month){
 		
 		eventList = this.fetchEvents(currentLng, currentLat, currentRadius, year, month);
 		return eventList;
 	}
 	
-	public List<Event> getEventListFrom(int year, int month, int day){
+	public ArrayList<Event> getEventListFrom(int year, int month, int day){
 		
 		eventList = this.fetchEvents(currentLng, currentLat, currentRadius, year, month, day);
 		return eventList;
@@ -135,6 +143,8 @@ public class EventManager{
 						 + "FROM Events "
 						 + "WHERE `event-id` = '" + eID + "';";
 			
+			
+			System.out.println("\n" + query + "\n");
 			ResultSet rs = st.executeQuery(query);
 
 			while (rs.next()){
@@ -235,7 +245,7 @@ public class EventManager{
 					 + event.getLng() + "','" 
 					 + event.getLat() + "');";
 		
-		System.out.println(query);
+		System.out.println("\n INSERT QUERY" + query + "\n");
 		
 		try{
 			st.executeUpdate(query);
@@ -253,7 +263,7 @@ public class EventManager{
 	
 // Private / Helper methods
 	
-		private List<Event> fetchEvents(float lng, float lat, int radius, String order){
+		private ArrayList<Event> fetchEvents(float lng, float lat, int radius, String order){
 
 			// set new currents
 			currentLng		= lng;
@@ -263,11 +273,11 @@ public class EventManager{
 			Statement st;
 			try{
 				
+				st = con.createStatement();
+				
 				//get current sql date as a string to only display future events
 				java.util.Date utilDate = new java.util.Date();
 				String today = new java.sql.Date(utilDate.getTime()).toString();
-				
-				st = con.createStatement();
 				
 				String distForm = "3959 * acos( " //3959 converts to miles
 						+ "cos(radians(" + lat + ")) * "
@@ -290,13 +300,13 @@ public class EventManager{
 				}
 				
 				String query = "SELECT *, (" + distForm + ") as `distance` "
-						 + "FROM Events, "
-						 + "HAVING `distance` < " + radius + " "
+						 + "FROM Events "
 						 + "WHERE `end-date` >= '" + today + "' "
+						 + "HAVING `distance` < " + radius + " "
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				
+				System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();
@@ -367,7 +377,7 @@ public class EventManager{
 		
 		
 		
-		private List<Event> fetchEvents(float lng, float lat, int radius, int year, int month){
+		private ArrayList<Event> fetchEvents(float lng, float lat, int radius, int year, int month){
 
 			// set new currents
 			currentLng		= lng;
@@ -399,14 +409,14 @@ public class EventManager{
 							 + "`end-date`, `end-time`, `distance` DESC";
 
 				String query = "SELECT *, (" + distForm + ") as `distance` "
-						 + "FROM Events, "
-						 + "HAVING `distance` < " + radius + " "
+						 + "FROM Events "
 						 + "WHERE `start-date` >= '" + start + "' "
+						 + "HAVING `distance` < " + radius + " "
 						 + "AND `start-date` < '" + end + "' "
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				
+				System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();
@@ -477,7 +487,7 @@ public class EventManager{
 		
 		
 		
-		private List<Event> fetchEvents(float lng, float lat, int radius, int year, int month, int day){
+		private ArrayList<Event> fetchEvents(float lng, float lat, int radius, int year, int month, int day){
 
 			// set new currents
 			currentLng		= lng;
@@ -503,13 +513,13 @@ public class EventManager{
 							 + "`end-date`, `end-time`, `distance` DESC";
 
 				String query = "SELECT *, (" + distForm + ") as `distance` "
-						 + "FROM Events, "
-						 + "HAVING `distance` < " + radius + " "
+						 + "FROM Events "
 						 + "WHERE `start-date` = '" + date + "' "
+						 + "HAVING `distance` < " + radius + " "
 						 + "ORDER BY " + orderString + ";";
 				
 				
-				
+				System.out.println("\n" + query + "\n");
 				ResultSet rs = st.executeQuery(query);
 
 				eventList = new ArrayList<Event>();

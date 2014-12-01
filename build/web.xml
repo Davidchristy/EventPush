@@ -5,72 +5,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	
-  <!-- Use the URL http://hostname/intro/test instead
-       of http://hostname/intro/servlet/HelloWorld -->
-  <servlet>
-    <servlet-name>Test Plain Text Servlet</servlet-name>
-    <servlet-class>HelloWorld</servlet-class>
-  </servlet>
-  <servlet-mapping>
+   <servlet-mapping>
     <servlet-name>Test Plain Text Servlet</servlet-name>
     <url-pattern>/test</url-pattern>
   </servlet-mapping>
   
-  <!-- Use the URL http://hostname/intro/hi instead
-       of http://hostname/intro/servlet/HelloServlet -->
-  <servlet>
-    <servlet-name>First Hello Servlet</servlet-name>
-    <servlet-class>HelloServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>First Hello Servlet</servlet-name>
-    <url-pattern>/hi</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Use the URL http://hostname/intro/hi2 instead
-       of http://hostname/intro/servlet/coreservlets.HelloServlet2 -->
-  <servlet>
-    <servlet-name>Second Hello Servlet</servlet-name>
-    <servlet-class>coreservlets.HelloServlet2</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Second Hello Servlet</servlet-name>
-    <url-pattern>/hi2</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Use the URL http://hostname/intro/hi3 instead
-       of http://hostname/intro/servlet/coreservlets.HelloServlet3 -->
-  <servlet>
-    <servlet-name>Third Hello Servlet</servlet-name>
-    <servlet-class>coreservlets.HelloServlet3</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Third Hello Servlet</servlet-name>
-    <url-pattern>/hi3</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Use the URL http://hostname/EventPushStart/create instead
-       of http://hostname/intro/servlet/coreservlets.CreateEventServlet -->
-  <servlet>
-    <servlet-name>CreateEventServlet</servlet-name>
-    <servlet-class>coreservlets.CreateEventServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>CreateEventServlet</servlet-name>
-    <url-pattern>/create</url-pattern>
-  </servlet-mapping>
-
-  <!-- Use the URL http://hostname/EventPushStart/create/query instead
-       of http://hostname/intro/servlet/coreservlets.CreateEventQueryServlet -->
-  <servlet>
-    <servlet-name>CreateEventQueryServlet</servlet-name>
-    <servlet-class>coreservlets.CreateEventQueryServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-      <servlet-name>CreateEventQueryServlet</servlet-name>
-      <url-pattern>/create/query</url-pattern>
-  </servlet-mapping>
-
   <!-- If the URL gives a directory but not a filename, try
        index.jsp first and index.html second. If neither is
        found, the result is server-specific (e.g., a  
