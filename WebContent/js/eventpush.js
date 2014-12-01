@@ -193,20 +193,6 @@ jQuery(document).ready(function($) {
 
 	$('body').on('click', '#submit', function() {
 		
-		if (response.status === 'connected') {
-			// the user is logged in and has authenticated your
-			// app, and response.authResponse supplies
-			// the user's ID, a valid access token, a signed
-			// request, and the time the access token
-			// and signed request each expire
-			var uid = response.authResponse.userID;
-			var accessToken = response.authResponse.accessToken;
-		} else if (response.status === 'not_authorized') {
-			alert("You must log into Facebook to continue");
-		} else {
-			alert("Click login to continue");
-		}
-
 		var eventTitle 	 = $("#event-title").val();
 		var description  = $("#description").val();
 		var category 	 = $("#category-id").val();
