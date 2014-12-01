@@ -12,9 +12,8 @@
 	//default constructor shows 25 miles from GS
 	EventManager eventManager = new EventManager(); 
 	ArrayList<Event>  upcomingEvents = eventManager.orderEventListBy("date");
-	System.out.println(upcomingEvents.size());
 	ArrayList<Event>  nearbyEvents	 = eventManager.orderEventListBy("distance");
-	System.out.println(nearbyEvents.size());
+
 %>
 
 <div class="list-column">
