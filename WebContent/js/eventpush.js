@@ -205,7 +205,7 @@ jQuery(document).ready(function($) {
 			alert("You must log into Facebook to continue");
 		} else {
 			alert("Click login to continue");
-
+			return false;
 		}
 
 		var eventTitle 	 = $("#event-title").val();
