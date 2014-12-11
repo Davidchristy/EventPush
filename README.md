@@ -2,7 +2,9 @@
 
 
 ##Introduction
-This is is a geolocation based event-posting website where users can log on and find out what is going on near them in the relative near future. Events will be listed in chronological order relative to users’ locations as well as pinpointed on a map using the Google Maps API
+This is is a geolocation based event-posting website where users can log on and find out what is going on near them in the relative near future. Events will be listed in chronological order relative to users’ locations as well as pinpointed on a map using the Google Maps API.
+
+If you want to view a live version of this site check us out at [Event Push Tucson](http://www.eventpushtucson.com) (www.eventpushtucson.com)
 
 ##Technology Stack
 
