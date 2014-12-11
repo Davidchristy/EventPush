@@ -22,7 +22,7 @@ The following were used but aren’t fundamental towards the completion of the p
 
 ##Team
 
-**Karin Blanford** - professional Administrative role, Front End Development 
+**Karin Blanford** - Professional Administrative role, Front End Development 
 
 **David Christy** - Git Master, System Administrator, Back End Development
 
